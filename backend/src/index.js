@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import connect from "./db/mongo.js";
 import userRoutes from "./routes/userRoutes.js";
+import trailRoutes from "./routes/trailRoutes.js";
 
 (async () => {
   const app = express();
@@ -12,7 +13,8 @@ import userRoutes from "./routes/userRoutes.js";
 
   await connect();
 
-  app.use('/api/users', userRoutes)
+  app.use('/api/users', userRoutes);
+  app.use('/api/trails', trailRoutes);
 
   app.listen(config.PORT, () => {
     console.log(`Server is running on port ${config.PORT}`);
