@@ -8,6 +8,7 @@ class UserRepository {
   async findById(id) {
     return await UserModel.findById(id);
   }
+  
   async findByEmail(email) {
     return await UserModel.findOne({ email });
   }

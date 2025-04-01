@@ -16,7 +16,7 @@ router.post('/login', authenticateUser);
 router.post('/', createUser);
 router.post('/refresh-token', refreshToken);
 
-router.get('/', authMiddleware, getAllUsers);
+router.get('/', getAllUsers);
 router.get('/:id', authMiddleware, getUserById);
 router.get('/:id', authMiddleware, updateUser);
 router.get('/:id', authMiddleware, deleteUser);
