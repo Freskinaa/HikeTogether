@@ -1,0 +1,133 @@
+@import "../../styles/global.scss";
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Righteous&display=swap");
+
+.scrolled {
+  transition: 0.2s ease;
+  position: sticky;
+  top: 0;
+  padding: 35px 30px;
+  color: rgba(0, 0, 0, 0.7);
+  z-index: 2010;
+  background-color: $primary-background-color;
+
+  @include small-screen-and-more {
+    padding: 15px 30px;
+  }
+}
+
+.navContainer {
+  position: sticky;
+  top: 0;
+  padding: 35px 15px;
+  color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  transition: 0.2s ease;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+
+  .navContainer.scrolled {
+    display: none;
+  }
+
+  @include small-screen-and-more {
+    padding: 15px 20px;
+  }
+  @include medium-screen-and-more {
+    padding: 15px 30px;
+  }
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-family: $font-family;
+    font-size: 16px;
+    @include small-screen-and-more {
+      font-size: 18px;
+    }
+    position: relative;
+    transition: color 0.9s;
+  }
+
+  a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+
+    bottom: -6px;
+    background-color: $primary-green;
+    transition: width 0.4s, left 0.4s;
+    left: 0;
+  }
+
+  a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  .kosova-name {
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+  }
+
+  .hike-name {
+    color: rgb(81, 153, 182);
+    color: rgb(255, 255, 255);
+  }
+  .quasi-logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+  }
+  .quasi-logo a {
+    text-decoration: none;
+  }
+
+  .quasi-logo.no-hover:hover::after {
+    text-decoration: none !important;
+  }
+
+  a.quasi-logo.no-hover:hover::after {
+    text-decoration: none !important;
+  }
+
+  .auth-links {
+    display: flex;
+    align-items: baseline;
+    margin-left: auto;
+    gap: 5rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  #logged-links {
+    margin-right: 20px;
+  }
+
+  .sign-up {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+}
