@@ -24,8 +24,8 @@ export const getUserById = async (req, res, next) => {
 
 export const createUser = async (req, res, next) => {
   try {
-    const newUser = await userService.createUser(req.body);
-    res.status(HTTP_CODE.Created).json(newUser);
+     await userService.createUser(req.body);
+    res.status(HTTP_CODE.Created).json({msg: 'User created.'});
   } catch (err) {
     next(err);
   }
@@ -50,6 +50,26 @@ export const deleteUser = async (req, res, next) => {
       return res.status(HTTP_CODE.NotFound).json({ msg: "User not found" });
     }
     res.status(HTTP_CODE.OK).json({ msg: "User deleted" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const authenticateUser = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const { accessToken, refreshToken , user} = await userService.authenticateUser(email, password);
+    res.status(HTTP_CODE.OK).json({ accessToken, refreshToken, user });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const refreshToken = async (req, res, next) => {
+  try {
+    const { refreshToken } = req.body;
+    const { accessToken } = await userService.refreshAccessToken(refreshToken);
+    res.status(HTTP_CODE.OK).json({ accessToken });
   } catch (err) {
     next(err);
   }

@@ -1,0 +1,269 @@
+@import '../../styles/global.scss';
+
+.hamburgerMenu {
+  height: 0;
+  @include small-screen-and-more {
+    display: none;
+  }
+}
+@include small-screen-and-less {
+  #menuToggle {
+    opacity: 0;
+  }
+  .checkedMenu + .menuBtn > span {
+    transform: rotate(45deg);
+  }
+  .checkedMenu + .menuBtn > span::before {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  .checkedMenu + .menuBtn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .checkedMenu ~ .menuBox {
+    left: 0 !important;
+  }
+  .menuBtn {
+    position: fixed;
+    top: 55px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .checkedMenu + .scrolledColor > span {
+    transform: rotate(45deg);
+  }
+  .checkedMenu + .scrolledColor > span::before {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  .checkedMenu + .scrolledColor > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  .scrolledColor {
+    position: fixed;
+    top: 55px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .scrolledColor > span,
+  .scrolledColor > span::before,
+  .scrolledColor > span::after {
+    background-color: #355467;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    transition-duration: 0.25s;
+  }
+
+  .scrolledColor > span::after {
+    width: 80%;
+  }
+
+  .checkedMenu ~ .scrolledColor > span,
+  .checkedMenu ~ .scrolledColor > span::before,
+  .checkedMenu ~ .scrolledColor > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition-duration: 0.25s;
+  }
+  .scrolledColor > span::before {
+    content: '';
+    top: -8px;
+  }
+  .scrolledColor > span::after {
+    content: '';
+    top: 8px;
+    right: 0;
+  }
+
+  .menuBtn > span,
+  .menuBtn > span::before,
+  .menuBtn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition-duration: 0.25s;
+  }
+
+  .menuBtn > span::after {
+    width: 80%;
+  }
+
+  .checkedMenu ~ .menuBtn > span,
+  .checkedMenu ~ .menuBtn > span::before,
+  .checkedMenu ~ .menuBtn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition-duration: 0.25s;
+  }
+  .menuBtn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menuBtn > span::after {
+    content: '';
+    top: 8px;
+    right: 0;
+  }
+  .menuBox {
+    background-image: -webkit-linear-gradient(
+        to bottom,
+
+        rgba($primary-green, 0.8),
+        rgba($primary-green, 0.9)
+      ),
+      url('../../assets/images/canyon-matka.jpg');
+    background-image: linear-gradient(
+        to bottom,
+
+        rgba($primary-green, 0.8),
+        rgba($primary-green, 0.9)
+      ),
+      url('../../assets/images/canyon-matka.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    list-style: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    transition-duration: 0.4s;
+
+    .quasiLogo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+    }
+  }
+
+  .items {
+    gap: 5px;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: 1;
+  }
+  .menuItem {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menuItem:hover {
+    background-color: #cfd8dc;
+  }
+
+  .logo {
+    position: absolute;
+    top: 37px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    img {
+      height: 60px;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: 500;
+
+      @include small-screen-and-more {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .languages {
+    margin-top: 2.5rem;
+    padding: 2px;
+  }
+
+  .title {
+    margin-top: 1.5rem;
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+  }
+
+  .navLinks {
+    margin-top: 28px;
+    font-weight: 700;
+    font-size: 22px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navLinks > * {
+    font-family: $font-family;
+    margin-bottom: 14px;
+    text-decoration: none;
+    color: snow;
+  }
+  .footer {
+    margin-bottom: 30px;
+    margin-top: auto;
+    justify-self: end;
+
+    p,
+    span {
+      font-size: 14px;
+    }
+
+    .mail {
+      text-decoration: underline;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 14px;
+    }
+  }
+
+  .footer > * {
+    margin-bottom: 10px;
+  }
+}

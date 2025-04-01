@@ -1,0 +1,25 @@
+@import 'mixins';
+@import 'variables';
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .main-container {
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+html {
+  font-size: 72.5%;
+
+  @include medium-screen-and-more {
+    font-size: 82.5%;
+  }
+}

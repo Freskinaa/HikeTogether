@@ -1,0 +1,44 @@
+@import "../../../styles//variables.scss";
+
+//for transparent button use className="basic-btn", and for green button use className="basic-btn green"
+
+.basic-btn {
+  color: $font-color;
+  padding: 0.75rem 1.875rem;
+  border: 1px solid;
+  background-color: transparent;
+  border-color: $font-color;
+  font-size: 1rem;
+  font-family: $font-family;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  span {
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &.green {
+    background-color: $primary-green;
+    border-color: $primary-green;
+
+    &:hover {
+      background-color: $secondary-green;
+      border-color: $secondary-green;
+    }
+  }
+
+  &.blue {
+    background-color: $secondary-background-color;
+    border-color: $secondary-background-color;
+
+    &:hover {
+      background-color: $secondary-green;
+      border-color: $secondary-green;
+    }
+  }
+}
