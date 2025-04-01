@@ -8,6 +8,9 @@ class UserRepository {
   async findById(id) {
     return await UserModel.findById(id);
   }
+  async findByEmail(email) {
+    return await UserModel.findOne({ email });
+  }
 
   async create(userData) {
     const user = new UserModel(userData);
