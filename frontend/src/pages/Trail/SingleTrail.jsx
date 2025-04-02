@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './singleTrail.scss'
 import TrailDetails from '../../components/Trail/TrailDetails';
+import DetailsOfTrail from '../../components/Trail/DetailsOfTrail';
 
 const SingleTrail = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const SingleTrail = () => {
     <div className="trailspage-container-one">
       <div className="middle-box">
         {trail && <TrailDetails trail={trail}/>}
+        {trail && <DetailsOfTrail trail={trail}/>}
       </div>
     </div>
   );
