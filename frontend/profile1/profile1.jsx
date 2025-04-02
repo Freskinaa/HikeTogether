@@ -44,6 +44,33 @@ const Profile1 = () => {
                 <img src="https://via.placeholder.com/150" alt="Traveling" />
                 <img src="https://via.placeholder.com/150" alt="Reading" />
             </div>
+            <div style={{ margin: '20px 0', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+                <h2 style={{ textAlign: 'center', color: '#333' }}>Special Card</h2>
+                <p style={{ fontSize: '16px', lineHeight: '1.5', color: '#555' }}>
+                    This is a special card that highlights an important feature or announcement. 
+                    You can use this space to share updates, promotions, or any other key information.
+                </p>
+                <ul style={{ listStyleType: 'circle', paddingLeft: '20px', color: '#666' }}>
+                    <li>Feature 1: Easy to use</li>
+                    <li>Feature 2: Highly customizable</li>
+                    <li>Feature 3: Responsive design</li>
+                </ul>
+                <button 
+                    style={{ 
+                        display: 'block', 
+                        margin: '10px auto', 
+                        padding: '10px 20px', 
+                        backgroundColor: '#007BFF', 
+                        color: '#fff', 
+                        border: 'none', 
+                        borderRadius: '5px', 
+                        cursor: 'pointer' 
+                    }}
+                    onClick={() => alert('Learn More Clicked')}
+                >
+                    Learn More
+                </button>
+            </div>
             <button onClick={() => alert('Edit Profile Clicked')}>Edit Profile</button>
             <button onClick={() => alert('View Friends Clicked')}>View Friends</button>
             <button onClick={() => alert('Settings Clicked')}>Settings</button>
