@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import './singleTrail.scss'
 import TrailDetails from '../../components/Trail/TrailDetails';
 import DetailsOfTrail from '../../components/Trail/DetailsOfTrail';
+import TrailRoute from '../../components/Trail/TrailRoute';
 
 const SingleTrail = () => {
   const { id } = useParams();
@@ -22,6 +23,7 @@ const SingleTrail = () => {
       <div className="middle-box">
         {trail && <TrailDetails trail={trail}/>}
         {trail && <DetailsOfTrail trail={trail}/>}
+        {trail && <TrailRoute trail={trail}/>}
       </div>
     </div>
   );
