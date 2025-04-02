@@ -1,0 +1,349 @@
+@import "../../styles//variables.scss";
+
+.all-trails {
+  padding: 5rem 0;
+  background-color: $primary-background-color;
+  color: $font-color;
+  font-family: $font-family;
+  margin-top: -90px;
+
+  .all-trails-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 90px;
+
+    .all-trails-search {
+      width: 40%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+
+      .text-input {
+        width: 100%;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .search-icon {
+        position: absolute;
+        top: 50%;
+        right: 2rem;
+        font-size: 1.5rem;
+        color: $primary-green;
+        transform: translateY(-50%);
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+      }
+
+      .text-input:focus + .search-icon {
+        opacity: 0;
+      }
+    }
+
+    .all-trails-container {
+      width: 100%;
+      padding-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .trail-filters {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+        padding: 0 3rem;
+
+        .filter-lists {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .trail-category {
+            cursor: pointer;
+            position: relative;
+            list-style-type: none;
+            margin-right: 2rem;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            transition: all 0.3s ease-in-out;
+
+            &.order {
+              color: $primary-green;
+
+              &.active {
+                &:before {
+                  width: 0;
+                }
+              }
+
+              &:hover {
+                &::before {
+                  width: 0;
+                }
+              }
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -10px;
+              width: 0%;
+              height: 2px;
+              background-color: $primary-green;
+              transition: all 0.3s ease-in-out;
+            }
+
+            &.active {
+              color: $primary-green;
+
+              &::before {
+                width: 100%;
+              }
+            }
+
+            &:hover {
+              color: $primary-green;
+
+              &::before {
+                width: 100%;
+              }
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        .other-filters {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .dropdown {
+            background-color: $primary-background-color;
+            color: $font-color;
+            padding: 15px;
+            border: 1px solid $secondary-background-color;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: $font-family;
+            margin-right: 1rem;
+      
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+      
+          .dropdown:focus {
+            outline: none;
+          }
+      
+          .dropdown option {
+            background-color: $primary-background-color;
+            color: $font-color;
+          }
+      
+          .dropdown:focus option:checked {
+            background-color: $secondary-background-color;
+            color: $font-color;
+          }
+        }
+
+      }
+
+      .filtered-trails {
+        .trails-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 5rem;
+
+          .single-trail-card {
+            width: calc((100% / 3) - 5rem);
+            box-shadow: 0 0.2rem 1rem rgba(255, 255, 255, 0.1);
+            position: relative;
+
+            .trail-duration {
+              position: absolute;
+              top: 2rem;
+              left: 2rem;
+              background-color: $primary-green;
+              padding: 0.5rem 1rem;
+              border-radius: 2px;
+            }
+
+            .trail-image {
+              cursor: pointer;
+              width: 100%;
+              height: 15rem;
+              object-fit: cover;
+              border-radius: 5px;
+              transition: all 0.3s ease-in-out;
+
+              &:hover {
+                filter: opacity(0.7);
+              }
+            }
+
+            .trail-details {
+              position: absolute;
+              top: 13rem;
+              left: 2rem;
+              right: 2rem;
+              overflow: hidden;
+              background-color: $primary-green;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              padding: 2rem 1rem;
+
+              .trail-detail {
+                display: flex;
+                flex-direction: column;
+
+                .detail-text {
+                  margin-bottom: 1rem;
+                  font-size: 1.1rem;
+                  font-weight: 700;
+                  color: $font-color;
+
+                  &.difficulty {
+                    text-transform: capitalize;
+                  }
+                }
+
+                .detail-name {
+                  font-size: 0.95rem;
+                  color: $paragraph-color;
+                }
+              }
+            }
+
+            .trail-description {
+              margin-top: 5rem;
+              padding: 2rem;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+
+              .trail-title {
+                font-size: 1.375rem;
+                margin-bottom: 2rem;
+                font-weight: 700;
+              }
+
+              .trail-desc {
+                margin-bottom: 2rem;
+                font-size: 0.95rem;
+              }
+
+              .bottom-trail-details {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                .trail-location {
+                  color: $primary-green;
+  
+                  .location-icon {
+                    font-size: 1.5rem;
+                    margin-right: 1rem;
+                  }
+                }
+
+                .trail-favorite {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-content: center;
+
+                  .favorite-icon {
+                    cursor: pointer;
+                    width: 24px;
+                    height: 24px;
+                    color: rgba(255, 255, 255, 0.331);
+                  }
+  
+                  .favorite {
+                    color: rgb(95, 174, 99);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .all-trails {
+    .all-trails-content {
+      .all-trails-container {
+        .trail-filters {
+          flex-direction: column;
+
+          .other-filters {
+            margin-top: 4rem;
+            flex-direction: column;
+
+            .dropdown {
+              margin-bottom: 1rem;
+            }
+          }
+        }
+        .filtered-trails {
+          .trails-container {
+            .single-trail-card {
+              width: calc((100% / 2) - 5rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .all-trails {
+    .all-trails-content {
+      .all-trails-search {
+        width: 80%;
+      }
+
+      .all-trails-container {
+        .trail-filters {
+          .filter-lists {
+            align-items: center;
+
+            .trail-category {
+              margin-right: 1.3rem;
+            }
+          }
+        }
+
+        .filtered-trails {
+          .trails-container {
+            .single-trail-card {
+              width: calc(100% - 5rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
