@@ -27,9 +27,6 @@ const Trails = () => {
   const [selectedDuration, setSelectedDuration] = useState();
   const [selectedElevationGain, setSelectedElevationGain] = useState();
 
-
-
-
   useEffect(() => {
     console.log(trails);
     if(trails) {
@@ -65,10 +62,6 @@ const Trails = () => {
   };
 
   const handleFilterDifficulty = (difficulty, query = "") => {
-    if (difficulty === "favorite") {
-      // setFilteredTrails(allTrails.filter((trail) => trail.isFavorite));
-      // setActiveDifficulty("favorite");
-    } else {
       let filtered = allTrails;
       if (query.trim() !== "") {
         filtered = filtered.filter((trail) =>
@@ -82,7 +75,6 @@ const Trails = () => {
       }
       setFilteredTrails(filtered);
       setActiveDifficulty(difficulty);
-    }
   };
   
 
@@ -145,6 +137,9 @@ const Trails = () => {
     setFilteredTrails(filtered);
   };
 
+  const handleTrailClick = (trailId) => {
+    navigate(`/trails/${trailId}`)
+  }
 
   return (
     <div className="all-trails">
@@ -240,7 +235,7 @@ const Trails = () => {
                       className="trail-image"
                       src={trail.photos[0]}
                       alt={trail.name}
-                      onClick={() => handleTrailClick(trail.name)}
+                      onClick={() => handleTrailClick(trail._id)}
                     />
 
                     <div className="trail-duration">

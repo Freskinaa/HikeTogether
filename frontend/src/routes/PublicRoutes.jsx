@@ -7,6 +7,7 @@ const LogIn = lazy(() => import("../pages/Auth/LogIn"));
 const Home = lazy(() => import("../pages/Home/Home"));
 const Trails = lazy(() => import("../pages/Trail/Trails"));
 const Events = lazy(() => import("../pages/Event/Events"));
+const SingleTrail = lazy(() => import("../pages/Trail/SingleTrail"));
 
 const PublicRoutes = () => {
   return {
@@ -65,6 +66,20 @@ const PublicRoutes = () => {
             }
           >
             <Trails />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/trails/:id",
+        element: (
+          <Suspense
+            fallback={
+              <div>
+                <LazyLoading />
+              </div>
+            }
+          >
+            <SingleTrail />
           </Suspense>
         ),
       },
