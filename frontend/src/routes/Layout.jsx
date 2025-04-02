@@ -8,7 +8,7 @@ const Layout = () => {
   const location = useLocation();
   const { pathname } = location;
   const loggedUser = false; // or false
-  const isLoginSignUp = pathname === '/login' || pathname === '/sign-up';
+  const isLoginSignUp = pathname === '/login' || pathname === '/signup';
 
   const basePath = '/user-stats';
   const hideNav = pathname.startsWith(basePath);

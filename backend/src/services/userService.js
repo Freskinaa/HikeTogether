@@ -57,15 +57,30 @@ class UserService {
   async refreshAccessToken(refreshToken) {
     try {
       const decoded = jwt.verify(refreshToken, config.JWT_REFRESH_SECRET);
-      const accessToken = jwt.sign({ id: decoded.id, email: decoded.email }, config.JWT_SECRET, {
-        expiresIn: config.JWT_ACCESS_EXPIRATION,
-      });
-
-      return { accessToken };
+  
+      const user = await userRepository.findById(decoded.id);
+      if (!user) {
+        throw new Error('User not found');
+      }
+  
+      const newAccessToken = jwt.sign(
+        { id: user.id, email: user.email },
+        config.JWT_SECRET,
+        { expiresIn: config.JWT_ACCESS_EXPIRATION }
+      );
+  
+      const newRefreshToken = jwt.sign(
+        { id: user.id, email: user.email },
+        config.JWT_REFRESH_SECRET,
+        { expiresIn: config.JWT_REFRESH_EXPIRATION }
+      );
+    
+      return { accessToken: newAccessToken, refreshToken: newRefreshToken };
     } catch (err) {
       throw new Error('Invalid refresh token');
     }
   }
+  
 }
 
 export default new UserService();

@@ -9,7 +9,7 @@ export const registerUser = createAsyncThunk(
     try {
       return await RegisterUseCase.execute(userData);
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Registration failed');
+      return rejectWithValue(error.response?.data?.message || 'Registration failed');
     }
   }
 );
@@ -19,10 +19,11 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await LoginUseCase.execute(credentials);
-      localStorage.setItem('accessToken', response.token);
+      localStorage.setItem('accessToken', response.accesstoken);
+      localStorage.setItem('refreshToken', response.refreshToken);
       return response;
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Login failed');
+      return rejectWithValue(error.response?.data?.message || 'Login failed');
     }
   }
 );
@@ -33,7 +34,7 @@ export const fetchUserById = createAsyncThunk(
     try {
       return await GetUserByIdUseCase.execute(userId);
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'User not found');
+      return rejectWithValue(error.response?.data?.message || 'User not found');
     }
   }
 );
@@ -42,25 +43,49 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
-    token: localStorage.getItem('accessToken') || null,
-    status: 'idle',
+    accesstoken: localStorage.getItem('accessToken') || null,
+    refreshToken: localStorage.getItem('refreshToken') || null,
+    isRegistered: false,
     error: null,
+    loading: false,
   },
   reducers: {
     logout: (state) => {
       state.user = null;
-      state.token = null;
+      state.accesstoken = null;
+      state.refreshToken = null;
+      state.isRegistered = false;
+      state.error = null;
+      state.loading = false;
+      localStorage.removeItem('accessToken');
       localStorage.removeItem('accessToken');
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registerUser.fulfilled, (state) => {
-        state.status = 'succeeded';
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.accesstoken = action.payload.accesstoken;
+        state.refreshToken = action.payload.refreshToken;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+      })
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(registerUser.fulfilled, (state) => {
+        state.isRegistered = true;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
       .addCase(fetchUserById.fulfilled, (state, action) => {
         state.user = action.payload;
