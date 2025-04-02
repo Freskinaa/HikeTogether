@@ -5,6 +5,7 @@ import './singleTrail.scss'
 import TrailDetails from '../../components/Trail/TrailDetails';
 import DetailsOfTrail from '../../components/Trail/DetailsOfTrail';
 import TrailRoute from '../../components/Trail/TrailRoute';
+import TrailWeather from '../../components/Trail/TrailWeather';
 
 const SingleTrail = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const SingleTrail = () => {
         {trail && <TrailDetails trail={trail}/>}
         {trail && <DetailsOfTrail trail={trail}/>}
         {trail && <TrailRoute trail={trail}/>}
+        {trail && <TrailWeather trail={trail}/>}
       </div>
     </div>
   );

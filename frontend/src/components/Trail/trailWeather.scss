@@ -1,0 +1,10 @@
+.weather-and-extra-informations {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .weather-and-extra-informations > * {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
