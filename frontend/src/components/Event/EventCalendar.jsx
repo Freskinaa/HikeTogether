@@ -5,7 +5,7 @@ import "./eventCalendar.scss";
 import InputField from "../../components/Shared/InputField/InputField";
 import moment from "moment/moment";
 import { useDispatch } from "react-redux";
-import { getAllEvents , createEventAsync} from "../../store/eventSlice";
+import { getAllEvents , createEventAsync, deleteEventAsync} from "../../store/eventSlice";
 
 const EventCalendar = ({ trail }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -74,8 +74,6 @@ const EventCalendar = ({ trail }) => {
       currentDate.setMinutes(minutes);
       const formattedDate = currentDate.toISOString();
 
-      console.log(userId);
-      
       const payload = {
         title: modalTitle,
         description: modalDescription,
@@ -96,11 +94,7 @@ const EventCalendar = ({ trail }) => {
 
   const deleteEvent = async (eventId) => {
     try {
-    //   await axios.delete(`${BASE_URL}/events/${eventId}/creatorId`);
-
-    //   const updatedEvents = { ...events };
-    //   delete updatedEvents[selectedDate];
-    //   setEvents(updatedEvents);
+      dispatch(deleteEventAsync(eventId))
 
       setSelectedDate(null);
       setModalVisible(false);

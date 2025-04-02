@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { GetAllEventsUseCase } from "../use-cases/GetAllEventsUseCase";
 import { CreateEventUseCase } from "../use-cases/CreateEventUseCase";
+import { DeleteEventUseCase } from "../use-cases/DeleteEventUseCase";
 
 export const getAllEvents = createAsyncThunk(
   "event/getAllEvents",
@@ -19,14 +20,26 @@ export const createEventAsync = createAsyncThunk(
   "event/createEvent",
   async (eventData, { rejectWithValue }) => {
     try {
-      const response = CreateEventUseCase.execute(eventData);
+      const response = await CreateEventUseCase.execute(eventData);
       console.log(response);
-
-      return response
-      
+      return response;
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || "Cannot create event"
+      );
+    }
+  }
+);
+
+export const deleteEventAsync = createAsyncThunk(
+  "event/deleteEvent",
+  async (eventId, { rejectWithValue }) => {
+    try {
+      const response = await DeleteEventUseCase.execute(eventId);
+      return eventId; 
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Cannot delete event"
       );
     }
   }
@@ -53,9 +66,7 @@ const eventSlice = createSlice({
       .addCase(getAllEvents.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
-
-    builder
+      })
       .addCase(createEventAsync.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -65,6 +76,20 @@ const eventSlice = createSlice({
         state.loading = false;
       })
       .addCase(createEventAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteEventAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteEventAsync.fulfilled, (state, action) => {
+        state.events = state.events.filter(
+          (event) => event._id !== action.payload
+        ); 
+        state.loading = false;
+      })
+      .addCase(deleteEventAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
