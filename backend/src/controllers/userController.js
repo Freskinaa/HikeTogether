@@ -61,15 +61,16 @@ export const authenticateUser = async (req, res, next) => {
     const { accessToken, refreshToken , user} = await userService.authenticateUser(email, password);
     res.status(HTTP_CODE.OK).json({ accessToken, refreshToken, user });
   } catch (err) {
-    next(err);
+    res.status(HTTP_CODE.BadRequest).json({ message: err.message  });
+    // next(err);
   }
 };
 
 export const refreshToken = async (req, res, next) => {
   try {
     const { refreshToken } = req.body;
-    const { accessToken } = await userService.refreshAccessToken(refreshToken);
-    res.status(HTTP_CODE.OK).json({ accessToken });
+    const { accessToken, refreshToken: newRefreshToken } = await userService.refreshAccessToken(refreshToken);
+    res.status(HTTP_CODE.OK).json({ accessToken, newRefreshToken });
   } catch (err) {
     next(err);
   }

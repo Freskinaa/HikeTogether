@@ -9,8 +9,6 @@ const Trails = lazy(() => import("../pages/Trail/Trails"));
 const Events = lazy(() => import("../pages/Event/Events"));
 
 const PublicRoutes = () => {
-  console.log('hi public');
-  
   return {
     element: <Layout />,
     children: [
