@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTree, faUser } from "@fortawesome/free-solid-svg-icons"; 
 import "./Navbar.scss";
 import BurgerNav from "./BurgerNav";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [token, setToken] = useState(false);
+  const accessToken = useSelector((state) => state.auth.accesstoken);
   const location = useLocation(); 
   const navContainerClasses = ["navContainer"];
 
@@ -66,7 +67,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faTree} style={{ height: "20px" }} />
             <p className="hike-name">TOGETHER</p>
           </Link>
-          {!token ? (
+          {!accessToken ? (
             <div
               className="auth-links"
               style={scrolled ? { color: "#566735" } : {}}

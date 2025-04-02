@@ -19,8 +19,10 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await LoginUseCase.execute(credentials);
-      localStorage.setItem('accessToken', response.accesstoken);
+      
+      localStorage.setItem('accessToken', response.accessToken);
       localStorage.setItem('refreshToken', response.refreshToken);
+      localStorage.setItem('user', JSON.stringify(response.user));
       return response;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Login failed');
@@ -38,6 +40,30 @@ export const fetchUserById = createAsyncThunk(
     }
   }
 );
+
+export const restoreSession = createAsyncThunk(
+  'auth/restoreSession', 
+  async (_, {rejectWithValue}) => {
+    try {
+      const accessToken = localStorage.getItem('accessToken')
+      const refreshToken = localStorage.getItem('refreshToken')
+      const user = localStorage.getItem('user')
+
+      if (!accessToken) {
+        throw new Error('Token not found');
+      }
+
+      return {
+        accessToken,
+        refreshToken,
+        user
+      };
+
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
 
 const authSlice = createSlice({
   name: 'auth',
@@ -58,7 +84,8 @@ const authSlice = createSlice({
       state.error = null;
       state.loading = false;
       localStorage.removeItem('accessToken');
-      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
     },
   },
   extraReducers: (builder) => {
@@ -69,8 +96,9 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.accesstoken = action.payload.accesstoken;
+        state.accesstoken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        state.loading = false
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -89,6 +117,20 @@ const authSlice = createSlice({
       })
       .addCase(fetchUserById.fulfilled, (state, action) => {
         state.user = action.payload;
+      })
+      .addCase(restoreSession.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(restoreSession.fulfilled, (state, action) => {
+        state.accesstoken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.user = action.payload.user;
+        state.loading = false;
+      })
+      .addCase(restoreSession.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload.error?.message;
       });
   },
 });
