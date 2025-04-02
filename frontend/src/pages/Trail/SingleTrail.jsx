@@ -6,6 +6,7 @@ import TrailDetails from '../../components/Trail/TrailDetails';
 import DetailsOfTrail from '../../components/Trail/DetailsOfTrail';
 import TrailRoute from '../../components/Trail/TrailRoute';
 import TrailWeather from '../../components/Trail/TrailWeather';
+import TrailEvents from '../../components/Trail/TrailEvents';
 
 const SingleTrail = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const SingleTrail = () => {
       <div className="middle-box">
         {trail && <TrailDetails trail={trail}/>}
         {trail && <DetailsOfTrail trail={trail}/>}
+        {trail && <TrailEvents trail={trail}/>}
         {trail && <TrailRoute trail={trail}/>}
         {trail && <TrailWeather trail={trail}/>}
       </div>

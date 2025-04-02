@@ -56,7 +56,7 @@ export const restoreSession = createAsyncThunk(
       return {
         accessToken,
         refreshToken,
-        user
+        user: JSON.parse(user),
       };
 
     } catch (error) {

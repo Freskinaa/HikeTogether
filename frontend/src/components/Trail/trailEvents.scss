@@ -1,0 +1,120 @@
+@import "../../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+.trailspage-info {
+  display: flex;
+  gap: 20px;
+  background-color: #fff;
+  margin-bottom: 30px;
+  font-family: $font-family;
+
+  .title-pick-date {
+    font-family: "Raleway", sans-serif;
+
+    padding-top: 120px;
+    .title-pick-the-date {
+      font-family: "Raleway", sans-serif;
+      color: rgba(105, 104, 103, 0.437);
+      text-align: center;
+      padding-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .or-text {
+      font-family: "Raleway", sans-serif;
+      text-align: center;
+      font-style: italic;
+      padding-bottom: 20px;
+      font-size: 15px;
+      color: rgba(105, 104, 103, 0.437);
+    }
+    .join-the-date {
+      font-family: "Raleway", sans-serif;
+      text-align: center;
+      font-size: 20px;
+      color: rgba(105, 104, 103, 0.437);
+    }
+  }
+
+  .trailspage-event {
+    width: 40%;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+
+    .info-box {
+      height: 320px;
+      width: 100%;
+      align-items: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  }
+
+  > * {
+    flex-grow: 1;
+  }
+
+  .all-info-of-events {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 5%;
+    font-family: $font-family;
+    gap: 20px;
+
+    .event-info {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 50px;
+
+      .all-the-details-for-info-trail {
+        border-bottom: 1px solid rgb(75, 136, 72);
+        width: 300px;
+      }
+
+      .number-info-detail {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: 10px;
+        border-right: 1px solid rgb(75, 136, 72);
+        width: 100px;
+        p {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .trailspage-event {
+      width: calc(120%);
+    }
+
+    :where(.css-dev-only-do-not-override-18tvyb7).ant-picker-calendar
+      .ant-picker-panel
+      .ant-picker-body {
+      padding: 16px 0;
+      height: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .all-info-of-events {
+      .event-info {
+        .all-the-details-for-info-trail,
+        .number-info-detail {
+          max-width: none;
+        }
+      }
+    }
+
+    .ant-picker-calendar.ant-picker-calendar-mini.css-dev-only-do-not-override-1xg9z9n {
+      margin: 0 auto;
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
