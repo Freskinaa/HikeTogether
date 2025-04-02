@@ -1,0 +1,209 @@
+@import "../../styles/variables.scss";
+
+.trailspage-container-one {
+  background-color: $primary-background-color;
+  background-image: url("../../assets/images/image-back.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 1200px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  margin-top: -70px;
+  width: 100%;
+  animation-name: zoomBackground;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes zoomBackground {
+  0% {
+    background-size: 100% 1200px;
+  }
+
+  100% {
+    background-size: 110% 1320px;
+  }
+}
+
+.middle-box {
+  margin-top: 40px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.trailspage-content {
+  width: 100%;
+}
+
+.trailspage-main-image {
+  // display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.trailspage-main-image img {
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+.photo-description {
+  margin-left: 20px;
+}
+
+.photo-description h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.photo-description p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.trailspage-trail {
+  margin-bottom: 20px;
+}
+
+.trailspage-trail h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.trailspage-trail iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 8px;
+}
+
+.comment-section {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.comment-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.comments {
+  margin-bottom: 10px;
+}
+
+.comment {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.new-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-comment textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.new-comment button {
+  width: 100px;
+  align-self: flex-end;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #07b310;
+  color: white;
+  cursor: pointer;
+}
+
+.new-comment button:hover {
+  background-color: #059a07;
+}
+
+.button-circles {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(74, 172, 103);
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.circle img {
+  width: 30px;
+  height: 30px;
+}
+
+.separator-line {
+  width: 100%;
+  height: 12px;
+  background-color: #07b310;
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .middle-box {
+    margin-top: 0;
+    width: 100%;
+    background-color: rgb(189, 195, 197);
+  }
+
+  .trailspage-main-image {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trailspage-main-image img {
+    max-width: 400px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .photo-description {
+    margin-left: 20px;
+    color: rgb(0, 0, 0);
+  }
+
+  .trailspage-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trailspage-weather,
+  .trailspage-gear,
+  .trailspage-event {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: rgb(210, 232, 210);
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 900px) {
+  .trailspage-weather,
+  .trailspage-gear,
+  .trailspage-event {
+    width: calc(50% - 10px);
+    margin-right: 10px;
+    background-color: rgb(210, 232, 210);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .trailspage-container-one {
+    background-size: 100%;
+  }
+}
