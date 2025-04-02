@@ -3,17 +3,16 @@ import { Outlet, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './../components/navbar/Navbar';
 import Footer from './../components/footer/Footer';
 import ScrollToTop from '../utils/ScrollToTop';
+import { useSelector } from "react-redux";
 
 const Layout = () => {
   const location = useLocation();
   const { pathname } = location;
-  const loggedUser = false; // or false
-  const isLoginSignUp = pathname === '/login' || pathname === '/sign-up';
+  const isLoginSignUp = pathname === '/login' || pathname === '/signup';
+  const accessToken = useSelector((state) => state.auth.accesstoken);
 
-  const basePath = '/user-stats';
-  const hideNav = pathname.startsWith(basePath);
-  const navShouldBeHidden = hideNav || isLoginSignUp;
-  if (loggedUser && isLoginSignUp) {
+  const navShouldBeHidden =  isLoginSignUp;
+  if (accessToken && isLoginSignUp) {
     return <Navigate to='/' replace />;
   }
 

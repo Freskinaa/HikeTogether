@@ -6,14 +6,37 @@ import banner3 from "../../../assets/images/banner3.jpg";
 import banner4 from "../../../assets/images/banner4.jpg";
 import SubTitle from "../../Shared/Subtitle/SubTitle";
 import NumberIncrement from "./NumberIncrement";
+import {useDispatch, useSelector} from 'react-redux'
+import {getAllTrails} from '../../../store/trailSlice'
+import {getAllEvents} from '../../../store/eventSlice'
 
 const Banner = () => {
   const [bannerImg, setBannerImg] = useState(banner1);
   const [activeBullet, setActiveBullet] = useState(0);
-  const [trailsLength, setTrailsLength] = useState(10);
+  const [trailsLength, setTrailsLength] = useState(0);
   const [usersLength, setUsersLength] = useState(3);
   const [eventsLength, setEventsLength] = useState(100);
-  const [transition, setTransition] = useState(false);
+  const [transition, setTransition] = useState(false)
+  const dispatch = useDispatch()
+  const {trails} = useSelector(state=> state.trail)
+  const {events} = useSelector(state=> state.event)
+
+  useEffect(() => {
+    if(trails) {
+      setTrailsLength(trails.length)
+    }
+  }, [trails])
+
+  useEffect(() => {
+    if(events) {
+      setEventsLength(events.length)
+    }
+  }, [events])
+
+  useEffect(() => {
+    dispatch(getAllTrails())
+    dispatch(getAllEvents())
+  }, [dispatch])
 
   const sliderImages = [
     [banner1, banner2, banner3],

@@ -5,8 +5,6 @@ import LazyLoading from '../utils/LazyLoading'
 const Profile = lazy(() => import("../pages/Profile/Profile"));
 
 const PrivateRoutes = () => {
-  console.log('hi private');
-  
   return {
     element: <Layout />,
     children: [
