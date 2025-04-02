@@ -71,6 +71,26 @@ const Profile1 = () => {
                     Learn More
                 </button>
             </div>
+            <div style={{ margin: '20px 0', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+                <h2 style={{ textAlign: 'center', color: '#333' }}>Inspirational Quotes</h2>
+                <ul style={{ listStyleType: 'square', paddingLeft: '20px', color: '#555' }}>
+                    <li>"The best way to predict the future is to create it." - Peter Drucker</li>
+                    <li>"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill</li>
+                    <li>"Believe you can and you're halfway there." - Theodore Roosevelt</li>
+                    <li>"Do not wait to strike till the iron is hot; but make it hot by striking." - William Butler Yeats</li>
+                    <li>"The only limit to our realization of tomorrow will be our doubts of today." - Franklin D. Roosevelt</li>
+                    <li>"Act as if what you do makes a difference. It does." - William James</li>
+                    <li>"What lies behind us and what lies before us are tiny matters compared to what lies within us." - Ralph Waldo Emerson</li>
+                    <li>"The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt</li>
+                    <li>"It does not matter how slowly you go as long as you do not stop." - Confucius</li>
+                    <li>"Hardships often prepare ordinary people for an extraordinary destiny." - C.S. Lewis</li>
+                    <li>"The only way to do great work is to love what you do." - Steve Jobs</li>
+                    <li>"You miss 100% of the shots you don’t take." - Wayne Gretzky</li>
+                    <li>"The journey of a thousand miles begins with one step." - Lao Tzu</li>
+                    <li>"Dream big and dare to fail." - Norman Vaughan</li>
+                    <li>"Keep your face always toward the sunshine—and shadows will fall behind you." - Walt Whitman</li>
+                </ul>
+            </div>
             <button onClick={() => alert('Edit Profile Clicked')}>Edit Profile</button>
             <button onClick={() => alert('View Friends Clicked')}>View Friends</button>
             <button onClick={() => alert('Settings Clicked')}>Settings</button>
