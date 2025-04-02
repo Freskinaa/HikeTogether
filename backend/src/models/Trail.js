@@ -44,6 +44,10 @@ const Trail = new mongoose.Schema({
     tags: {
         type: [String]
     },
+    events: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event'
+    }]
 });
 
 const TrailModel = mongoose.model("Trail", Trail);

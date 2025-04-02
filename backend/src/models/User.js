@@ -67,6 +67,10 @@ const User = new mongoose.Schema({
       default: null
     },
   },
+  eventsAttending: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Event'
+  }],
   created_at: {
     type: Date,
     default: Date.now,
