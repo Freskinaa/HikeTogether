@@ -1,10 +1,24 @@
 import React from 'react';
 
 // Main Profile1 component
+//oooooooooooooooooooo
+// This component represents a user profile page with various sections including personal information, friends, recent activities, and more.
+
+//
+
+
+
+
+
+
+
+
 const Profile1 = () => {
     return (
         <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', lineHeight: '1.6' }}>
             {/* Header Section */}
+            // This is the header section of the profile page
+            // It includes a title and a welcome message
             <header style={{ backgroundColor: '#007BFF', color: '#fff', padding: '20px', textAlign: 'center' }}>
                 <h1 style={{ margin: 0 }}>Profile Page</h1>
                 <p style={{ fontSize: '18px' }}>Welcome to the profile page!</p>
