@@ -1,3 +1,72 @@
+/**
+ * Trails Component
+ * 
+ * This component displays a list of popular hiking trails with their details,
+ * including name, location, and length. Each trail has a "Learn More" button
+ * that triggers an alert with the trail's name. Additionally, the component
+ * provides a random hiking fact and several paragraphs of information about
+ * hiking and trail preparation.
+ * 
+ * @component
+ * @returns {JSX.Element} A React component that renders a list of hiking trails
+ * and additional information about hiking.
+ */
+
+/**
+ * getRandomTrailFact
+ * 
+ * A helper function that returns a random hiking fact from a predefined list.
+ * 
+ * @function
+ * @returns {string} A random hiking fact.
+ */
+
+/**
+ * TrailTips Component
+ * 
+ * This component provides a list of helpful tips for hikers, such as carrying
+ * a map, staying hydrated, and checking the weather forecast. The tips are
+ * displayed in a styled container.
+ * 
+ * @component
+ * @returns {JSX.Element} A React component that renders a list of hiking tips.
+ */
+
+/**
+ * TrailGallery Component
+ * 
+ * This component displays a gallery of trail images. Each image is styled with
+ * a border radius and shadow for a polished appearance. The gallery is responsive
+ * and adjusts to different screen sizes.
+ * 
+ * @component
+ * @returns {JSX.Element} A React component that renders a gallery of trail images.
+ */
+
+/**
+ * trails
+ * 
+ * An array of trail objects, each containing the following properties:
+ * - id: A unique identifier for the trail.
+ * - name: The name of the trail.
+ * - location: The geographical location of the trail.
+ * - length: The length of the trail.
+ * 
+ * @constant
+ * @type {Array<{id: number, name: string, location: string, length: string}>}
+ */
+
+/**
+ * images
+ * 
+ * An array of image objects used in the TrailGallery component. Each object contains:
+ * - id: A unique identifier for the image.
+ * - src: The source URL of the image.
+ * - alt: The alt text for the image.
+ * 
+ * @constant
+ * @type {Array<{id: number, src: string, alt: string}>}
+ */
 import React from 'react';
 
 const Trails = () => {

@@ -1,13 +1,18 @@
 import React from 'react';
 
+// Main Profile1 component
 const Profile1 = () => {
     return (
         <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', lineHeight: '1.6' }}>
+            {/* Header Section */}
             <header style={{ backgroundColor: '#007BFF', color: '#fff', padding: '20px', textAlign: 'center' }}>
                 <h1 style={{ margin: 0 }}>Profile Page</h1>
                 <p style={{ fontSize: '18px' }}>Welcome to the profile page!</p>
             </header>
+
+            {/* Main Content */}
             <main style={{ padding: '20px' }}>
+                {/* Personal Information Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Personal Information</h2>
                     <ul style={{ listStyleType: 'none', padding: 0 }}>
@@ -28,6 +33,8 @@ const Profile1 = () => {
                         <li><strong>Achievements:</strong> Marathon Finisher, Published Author</li>
                     </ul>
                 </section>
+
+                {/* Friends Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Friends</h2>
                     <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
@@ -36,6 +43,8 @@ const Profile1 = () => {
                         <li>Emily Davis</li>
                     </ul>
                 </section>
+
+                {/* Recent Activities Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Recent Activities</h2>
                     <ul style={{ listStyleType: 'square', paddingLeft: '20px' }}>
@@ -44,6 +53,8 @@ const Profile1 = () => {
                         <li>Started learning French</li>
                     </ul>
                 </section>
+
+                {/* Gallery Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Gallery</h2>
                     <div style={{ display: 'flex', gap: '10px' }}>
@@ -52,6 +63,8 @@ const Profile1 = () => {
                         <img src="https://via.placeholder.com/150" alt="Reading" style={{ borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }} />
                     </div>
                 </section>
+
+                {/* Special Card Section */}
                 <section style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
                     <h2 style={{ textAlign: 'center', color: '#333' }}>Special Card</h2>
                     <p style={{ fontSize: '16px', lineHeight: '1.5', color: '#555' }}>
@@ -79,6 +92,8 @@ const Profile1 = () => {
                         Learn More
                     </button>
                 </section>
+
+                {/* Inspirational Quotes Section */}
                 <section style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
                     <h2 style={{ textAlign: 'center', color: '#333' }}>Inspirational Quotes</h2>
                     <ul style={{ listStyleType: 'square', paddingLeft: '20px', color: '#555' }}>
@@ -99,6 +114,8 @@ const Profile1 = () => {
                         <li>"Keep your face always toward the sunshine—and shadows will fall behind you." - Walt Whitman</li>
                     </ul>
                 </section>
+
+                {/* Upcoming Events Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Upcoming Events</h2>
                     <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
@@ -107,6 +124,8 @@ const Profile1 = () => {
                         <li>Book Club Meeting - April 15th</li>
                     </ul>
                 </section>
+
+                {/* Testimonials Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Testimonials</h2>
                     <blockquote style={{ fontStyle: 'italic', color: '#555', marginBottom: '10px' }}>
@@ -116,12 +135,16 @@ const Profile1 = () => {
                         "I love the events and activities organized by this community. Highly recommend!" - Mark T.
                     </blockquote>
                 </section>
+
+                {/* Contact Us Section */}
                 <section style={{ marginBottom: '20px' }}>
                     <h2 style={{ borderBottom: '2px solid #007BFF', paddingBottom: '5px' }}>Contact Us</h2>
                     <p>Email: support@hiketogether.com</p>
                     <p>Phone: +1 (555) 123-4567</p>
                     <p>Address: 123 Main Street, New York, NY</p>
                 </section>
+
+                {/* Action Buttons */}
                 <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '20px' }}>
                     <button 
                         style={{ padding: '10px 20px', backgroundColor: '#007BFF', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
@@ -149,6 +172,8 @@ const Profile1 = () => {
                     </button>
                 </div>
             </main>
+
+            {/* Footer Section */}
             <footer style={{ marginTop: '20px', padding: '10px', backgroundColor: '#f1f1f1', textAlign: 'center' }}>
                 <p>&copy; 2023 HikeTogether. All rights reserved.</p>
                 <p>
