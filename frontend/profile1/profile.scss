@@ -224,7 +224,15 @@ body {
     }
 
     .profile-about {
-        animation: zoomIn 0.8s ease-in-out;
+        animation: zoomIn 0.8s ease-in-out, fadeIn 1s ease-in-out, slideUp 1.2s ease-in-out, bounce 1.5s ease-in-out;
+        border: 2px dashed $primary-color;
+        color: darken($text-color, 10%);
+        font-style: italic;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        background-color: lighten($secondary-color, 10%);
+        border-radius: $border-radius;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .profile-container {
