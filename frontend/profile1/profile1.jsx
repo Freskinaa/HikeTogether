@@ -162,4 +162,107 @@ const Profile1 = () => {
     );
 };
 
+// Additional content to extend the Profile1 component
+const AdditionalContent = () => {
+    return (
+        <section style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+            <h2 style={{ textAlign: 'center', color: '#333' }}>More Features</h2>
+            <p style={{ fontSize: '16px', lineHeight: '1.5', color: '#555' }}>
+                Explore more features and functionalities that make HikeTogether a unique platform for outdoor enthusiasts.
+            </p>
+            <ul style={{ listStyleType: 'circle', paddingLeft: '20px', color: '#666' }}>
+                <li>Feature 4: Community-driven events</li>
+                <li>Feature 5: Personalized recommendations</li>
+                <li>Feature 6: Advanced analytics</li>
+            </ul>
+            <button 
+                style={{ 
+                    display: 'block', 
+                    margin: '10px auto', 
+                    padding: '10px 20px', 
+                    backgroundColor: '#007BFF', 
+                    color: '#fff', 
+                    border: 'none', 
+                    borderRadius: '5px', 
+                    cursor: 'pointer' 
+                }}
+                onClick={() => alert('Discover More Clicked')}
+            >
+                Discover More
+            </button>
+        </section>
+    );
+};
+
+// Adding a FAQ section
+const FAQSection = () => {
+    return (
+        <section style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+            <h2 style={{ textAlign: 'center', color: '#333' }}>Frequently Asked Questions</h2>
+            <ul style={{ listStyleType: 'none', padding: 0, color: '#555' }}>
+                <li style={{ marginBottom: '10px' }}>
+                    <strong>Q: How do I join a hiking group?</strong>
+                    <p>A: Navigate to the "Groups" section and select a group that matches your interests.</p>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
+                    <strong>Q: Can I organize my own event?</strong>
+                    <p>A: Yes, you can create events from your profile dashboard.</p>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
+                    <strong>Q: Is there a mobile app available?</strong>
+                    <p>A: Yes, our mobile app is available on both iOS and Android platforms.</p>
+                </li>
+            </ul>
+        </section>
+    );
+};
+
+// Adding a Testimonials Carousel
+const TestimonialsCarousel = () => {
+    return (
+        <section style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+            <h2 style={{ textAlign: 'center', color: '#333' }}>What Our Users Say</h2>
+            <div style={{ display: 'flex', overflowX: 'scroll', gap: '10px', padding: '10px' }}>
+                <blockquote style={{ minWidth: '300px', fontStyle: 'italic', color: '#555', padding: '10px', border: '1px solid #ddd', borderRadius: '10px' }}>
+                    "This platform has completely transformed my outdoor experiences!" - Alice W.
+                </blockquote>
+                <blockquote style={{ minWidth: '300px', fontStyle: 'italic', color: '#555', padding: '10px', border: '1px solid #ddd', borderRadius: '10px' }}>
+                    "I’ve met so many amazing people through HikeTogether." - John K.
+                </blockquote>
+                <blockquote style={{ minWidth: '300px', fontStyle: 'italic', color: '#555', padding: '10px', border: '1px solid #ddd', borderRadius: '10px' }}>
+                    "The events are well-organized and super fun!" - Maria P.
+                </blockquote>
+            </div>
+        </section>
+    );
+};
+
+// Adding a Newsletter Subscription Section
+const NewsletterSubscription = () => {
+    return (
+        <section style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+            <h2 style={{ textAlign: 'center', color: '#333' }}>Stay Updated</h2>
+            <p style={{ textAlign: 'center', color: '#555' }}>
+                Subscribe to our newsletter to receive the latest updates and event notifications.
+            </p>
+            <form style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '250px' }} 
+                />
+                <button 
+                    type="submit" 
+                    style={{ padding: '10px 20px', backgroundColor: '#007BFF', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                >
+                    Subscribe
+                </button>
+            </form>
+        </section>
+    );
+};
+
+// Adding all new sections to the Profile1 component
+// Additional sections are already included in the main Profile1 component above.
+
 export default Profile1;
