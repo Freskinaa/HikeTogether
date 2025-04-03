@@ -153,3 +153,204 @@
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
 }
+.trail-fint {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 15px;
+    text-align: justify;
+}
+
+.trail-fint strong {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.trail-fint em {
+    font-style: italic;
+    color: #555;
+}
+
+.trail-fint ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.trail-fint ul li {
+    margin-bottom: 5px;
+}
+
+.trail-fint a {
+    color: #007bff;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.trail-fint a:hover {
+    color: #0056b3;
+}
+.trail-highlight {
+    animation: glow 1.5s infinite;
+    border: 2px solid #007bff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.trail-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ff9800;
+}
+
+.trail-rating svg {
+    margin-right: 5px;
+    fill: #ff9800;
+}
+
+.trail-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 12px;
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+.trail-badge.popular {
+    background-color: #28a745;
+}
+
+.trail-badge.new {
+    background-color: #17a2b8;
+}
+
+.trail-badge.featured {
+    background-color: #ffc107;
+}
+
+.trail-map {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trail-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.trail-review {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trail-review h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.trail-review p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.trail-review .review-author {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+.trail-review .review-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+.trail-review .review-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ff9800;
+}
+
+.trail-review .review-rating svg {
+    margin-right: 5px;
+    fill: #ff9800;
+}
+
+.trail-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.trail-navigation .nav-button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.trail-navigation .nav-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.trail-navigation .nav-button:active {
+    background-color: #004085;
+    transform: scale(1);
+}
+
+.trail-footer {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.trail-footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.trail-footer a:hover {
+    text-decoration: underline;
+}
