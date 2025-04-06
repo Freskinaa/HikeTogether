@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./burgerNav.scss";
 import { Link } from "react-router-dom";
 import { LiaMountainSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
 
 const BurgerNav = ({ scrolled }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [token, setToken] = useState(false);
+  const accessToken = useSelector((state) => state.auth.accesstoken);
 
   const loggedInRoutes = [
     { name: "TRAILS", path: "/trails" },
@@ -13,8 +14,10 @@ const BurgerNav = ({ scrolled }) => {
     { name: "PROFILE", path: "/profile" },
   ];
   const normalRoutes = [
-    { name: "LOG IN", path: "/login" },
-    { name: "SIGN UP", path: "/signup", className: "sign-up" },
+    { name: "HOME", path: "/" },
+    { name: "TRAILS", path: "/trails" },
+    { name: "EVENTS", path: "/events" },
+    { name: "LOGIN", path: "/login" },
   ];
 
   return (
@@ -45,7 +48,7 @@ const BurgerNav = ({ scrolled }) => {
           </Link>
         </div>
         <div className="items">
-          {!token ? (
+          {!accessToken ? (
             <ul className="navLinks">
               {normalRoutes.map((route, index) => (
                 <Link
