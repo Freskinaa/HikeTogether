@@ -5,14 +5,18 @@ import "./eventCalendar.scss";
 import InputField from "../../components/Shared/InputField/InputField";
 import moment from "moment/moment";
 import { useDispatch } from "react-redux";
-import { getAllEvents , createEventAsync, deleteEventAsync} from "../../store/eventSlice";
+import {
+  getAllEvents,
+  createEventAsync,
+  deleteEventAsync,
+} from "../../store/eventSlice";
 
 const EventCalendar = ({ trail }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalDescription, setModalDescription] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-  const [allEvents, setAllEvents] = useState({});
+  const [allEvents, setAllEvents] = useState([]);
   const [modalTime, setModalTime] = useState(null);
   const [mode, setMode] = useState("month");
   const [titleError, setTitleError] = useState(null);
@@ -20,20 +24,18 @@ const EventCalendar = ({ trail }) => {
   const [timeError, setTimeError] = useState(null);
   const dispatch = useDispatch();
 
-  const {events} = useSelector((state) => state.event);
+  const { events } = useSelector((state) => state.event);
   const userId = useSelector((state) => state.auth)?.user?._id;
 
   useEffect(() => {
-    dispatch(getAllEvents())
+    dispatch(getAllEvents());
   }, [dispatch]);
 
   useEffect(() => {
-    if(events)
-    {
-      setAllEvents(events)
+    if (events) {
+      setAllEvents(events);
     }
-  }, [events])
-
+  }, [events]);
 
   const createEvent = async () => {
     setTitleError(null);
@@ -79,10 +81,10 @@ const EventCalendar = ({ trail }) => {
         description: modalDescription,
         date: formattedDate,
         creator: userId,
-        trail: trail._id
+        trail: trail._id,
       };
 
-      await dispatch(createEventAsync(payload))
+      await dispatch(createEventAsync(payload));
       message.success("Event created successfully.");
     } catch (error) {
       console.error("Error creating event:", error);
@@ -94,11 +96,10 @@ const EventCalendar = ({ trail }) => {
 
   const deleteEvent = async (eventId) => {
     try {
-      dispatch(deleteEventAsync(eventId))
+      dispatch(deleteEventAsync(eventId));
 
       setSelectedDate(null);
       setModalVisible(false);
-
     } catch (error) {
       console.error("Error deleting event:", error);
       message.error("Failed to delete event");
@@ -110,26 +111,31 @@ const EventCalendar = ({ trail }) => {
   };
 
   const handleDateClick = (value) => {
-    const date = value.format("YYYY-MM-DD");
-    setSelectedDate(date);
-    const event = allEvents[date] || { title: "", description: "", time: null };
-    setModalTitle(event.title);
-    setModalDescription(event.description);
-    setModalTime(event.time);
+    const selectedDate = value.format("YYYY-MM-DD");
+    setSelectedDate(selectedDate);
+
+    const event = allEvents.find((event) => {
+      const eventDate = moment(event.date).format("YYYY-MM-DD");
+      const eventCreator = event.creator === userId;
+      return eventDate === selectedDate && eventCreator;
+    });
+
+    const eventTime = event && moment(event.date).utc().format("HH:mm");
+
+    if (event) {
+      setModalTitle(event.title);
+      setModalDescription(event.description);
+
+      setModalTime(eventTime);
+    }
     setModalVisible(true);
   };
 
   const handleCancel = () => {
-    if (allEvents[selectedDate]) {
-      const eventId = allEvents[selectedDate]._id;
-      if (!eventId) {
-        console.error("Event ID not found.");
-      }
-      deleteEvent(eventId);
-    } else {
-      console.error("Event not found for the selected date.");
-    }
     setSelectedDate(null);
+    setModalTitle("");
+    setModalDescription("");
+    setModalTime(null);
     setModalVisible(false);
   };
 
@@ -155,8 +161,13 @@ const EventCalendar = ({ trail }) => {
             Cancel
           </Button>,
           <Button key="save" type="primary" onClick={createEvent}>
-            {allEvents[selectedDate] ? "Update Event" : "Create Event"}
-          </Button>
+            {allEvents?.find((event) => {
+              const eventDate = moment(event.date).format("YYYY-MM-DD");
+              return eventDate === selectedDate;
+            })?.creator === userId
+              ? "Update Event"
+              : "Create Event"}
+          </Button>,
         ]}
       >
         <div className="info-of-creating-event">
