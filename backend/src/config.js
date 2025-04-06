@@ -1,5 +1,7 @@
 import "dotenv/config";
 
+
+//gets data from .env
 const config = {
   MONGO_URI: process.env.MONGO_URI,
   PORT: process.env.PORT,
