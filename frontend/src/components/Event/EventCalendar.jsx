@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import {
   getAllEvents,
   createEventAsync,
-  deleteEventAsync,
+  updateEventAsync,
 } from "../../store/eventSlice";
 
 const EventCalendar = ({ trail }) => {
@@ -37,7 +37,7 @@ const EventCalendar = ({ trail }) => {
     }
   }, [events]);
 
-  const createEvent = async () => {
+  const handleSubmit = async () => {
     setTitleError(null);
     setDescriptionError(null);
     setTimeError(null);
@@ -83,26 +83,28 @@ const EventCalendar = ({ trail }) => {
         creator: userId,
         trail: trail._id,
       };
+      const event = allEvents?.find((event) => {
+        const eventDate = moment(event.date).format("YYYY-MM-DD");
+        return eventDate === selectedDate;
+      });
+      const isUpdating = event?.creator === userId;
 
-      await dispatch(createEventAsync(payload));
-      message.success("Event created successfully.");
+      if (isUpdating) {
+        dispatch(updateEventAsync(event._id, {
+          title: modalTitle,
+          description: modalDescription,
+          date: formattedDate
+        }));
+        message.success("Event updated successfully.");
+      } else {
+        dispatch(createEventAsync(payload));
+        message.success("Event created successfully.");
+      }
     } catch (error) {
       console.error("Error creating event:", error);
       message.error("Failed to create event");
     } finally {
       setModalVisible(false);
-    }
-  };
-
-  const deleteEvent = async (eventId) => {
-    try {
-      dispatch(deleteEventAsync(eventId));
-
-      setSelectedDate(null);
-      setModalVisible(false);
-    } catch (error) {
-      console.error("Error deleting event:", error);
-      message.error("Failed to delete event");
     }
   };
 
@@ -160,7 +162,7 @@ const EventCalendar = ({ trail }) => {
           <Button key="cancel" onClick={handleCancel} style={{ color: "#000" }}>
             Cancel
           </Button>,
-          <Button key="save" type="primary" onClick={createEvent}>
+          <Button key="save" type="primary" onClick={handleSubmit}>
             {allEvents?.find((event) => {
               const eventDate = moment(event.date).format("YYYY-MM-DD");
               return eventDate === selectedDate;

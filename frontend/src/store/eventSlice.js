@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { GetAllEventsUseCase } from "../use-cases/GetAllEventsUseCase";
 import { CreateEventUseCase } from "../use-cases/CreateEventUseCase";
 import { DeleteEventUseCase } from "../use-cases/DeleteEventUseCase";
+import { UpdateEventUseCase } from "../use-cases/UpdateEventUseCase";
 
 export const getAllEvents = createAsyncThunk(
   "event/getAllEvents",
@@ -26,6 +27,21 @@ export const createEventAsync = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || "Cannot create event"
+      );
+    }
+  }
+);
+
+export const updateEventAsync = createAsyncThunk(
+  "event/updateEvent",
+  async (id, eventData, { rejectWithValue }) => {
+    try {
+      const response = await UpdateEventUseCase.execute(id, eventData);
+      console.log(response);
+      return response;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Cannot update event"
       );
     }
   }
@@ -92,7 +108,23 @@ const eventSlice = createSlice({
       .addCase(deleteEventAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(updateEventAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateEventAsync.fulfilled, (state, action) => {
+        const updatedEvent = action.payload;
+        const index = state.events.findIndex((event) => event._id === updatedEvent._id);
+        if (index !== -1) {
+          state.events[index] = updatedEvent;
+        }
+        state.loading = false;
+      })
+      .addCase(updateEventAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
   },
 });
 
