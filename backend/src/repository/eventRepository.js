@@ -45,7 +45,7 @@ class EventRepository {
   async getAllEvents() {
     const events = await EventModel.find()
       .select('-__v')
-      .populate('trail', '_id name location')
+      .populate('trail')
       .populate('creator', '_id firstName lastName');
 
     const now = new Date();
@@ -69,7 +69,7 @@ class EventRepository {
   async getEventById(id) {
     const event = await EventModel.findById(id)
       .select('-__v')
-      .populate('trail', '_id name location')
+      .populate('trail')
       .populate('creator', '_id firstName lastName');
 
     if (!event) return null;
