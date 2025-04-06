@@ -84,7 +84,7 @@ const Footer = () => {
 
       <div className="f-bottom">
         <div className="left">
-          <p>© 2024 HikeTogether - Hiking & Outdoor</p>
+          <p>© 2025 HikeTogether - Hiking & Outdoor</p>
         </div>
         <div className="right">
           <p>Contact Us</p>
