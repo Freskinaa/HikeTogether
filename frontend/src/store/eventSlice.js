@@ -3,6 +3,7 @@ import { GetAllEventsUseCase } from "../use-cases/GetAllEventsUseCase";
 import { CreateEventUseCase } from "../use-cases/CreateEventUseCase";
 import { DeleteEventUseCase } from "../use-cases/DeleteEventUseCase";
 import { UpdateEventUseCase } from "../use-cases/UpdateEventUseCase";
+import { GetEventByIdUseCase } from "../use-cases/GetEventByIdUseCase";
 
 export const getAllEvents = createAsyncThunk(
   "event/getAllEvents",
@@ -16,6 +17,20 @@ export const getAllEvents = createAsyncThunk(
     }
   }
 );
+
+export const getEventById = createAsyncThunk(
+  "event/getEventById",
+  async (eventId, { rejectWithValue }) => {
+    try {
+      return await GetEventByIdUseCase.execute(eventId);
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Event not found"
+      );
+    }
+  }
+);
+
 
 export const createEventAsync = createAsyncThunk(
   "event/createEvent",
@@ -65,6 +80,7 @@ const eventSlice = createSlice({
   name: "event",
   initialState: {
     events: [],
+    currentEvent: null,
     error: null,
     loading: null,
   },
@@ -125,6 +141,18 @@ const eventSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(getEventById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getEventById.fulfilled, (state, action) => {
+        state.currentEvent = action.payload;
+        state.loading = false;
+      })
+      .addCase(getEventById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
