@@ -8,7 +8,7 @@ const ListComponent = ({ list, title, link, addItem, handleDelete }) => {
   const navigate = useNavigate();
   
   const handleAddClick = (item) => {
-    navigate(item);
+    navigate(`/${item}`);
   };
 
   const formatDate = (dateString) => {

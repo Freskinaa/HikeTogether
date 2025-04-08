@@ -32,7 +32,7 @@ const ProfileSection = ({ useri, completedPercentage, fieldsToComplete }) => {
           }
         >
           <div className="profile-card-content">
-            <ProfileCard user={useri} />
+            <ProfileCard useri={useri} />
           </div>
         </div>
         {completedPercentage < 100 && (
