@@ -2,14 +2,17 @@ import React from 'react';
 import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './eventCard.scss';
+import { useNavigate } from 'react-router-dom';
 
-const EventCard = ({img, duration, size, difficulty, details}) => {
+const EventCard = ({img, duration, size, difficulty, details, id}) => {
+    const navigate = useNavigate()
   return (
     <div className='single-event'>
         <img 
             className='event-img'
             src={img}
             alt="event" 
+            onClick={() => navigate(`/events/${id}`)}
         />
         <div className='event-info-box'>
             <div className='event-info'>

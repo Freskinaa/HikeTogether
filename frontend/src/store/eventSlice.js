@@ -195,7 +195,7 @@ const eventSlice = createSlice({
       .addCase(joinEventAsync.fulfilled, (state, action) => {
         state.loading = false;
       })
-      .addCase(getEjoinEventAsyncventById.rejected, (state, action) => {
+      .addCase(joinEventAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
