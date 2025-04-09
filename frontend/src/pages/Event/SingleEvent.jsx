@@ -41,20 +41,27 @@ const SingleEvent = () => {
     }
   }, [id, events]);
 
-  const isJoined = event?.attendees?.some((attendee) => attendee._id === user?._id);
+  const isJoined = event?.attendees?.some(
+    (attendee) => attendee._id === user?._id
+  );
   const isCreator = event?.creator?._id === user?._id;
 
   const handleJoin = () => {
-    dispatch(joinEventAsync({ eventId: id, user }))
+    dispatch(joinEventAsync({ id: id, userId: user._id }))
       .unwrap()
-      .then(() => message.success("Joined successfully"))
+      .then(() => {
+        dispatch(getAllEvents());
+        message.success("Joined successfully");
+      })
       .catch(() => message.error("Something went wrong"));
   };
 
   const handleLeave = () => {
-    dispatch(leaveEventAsync({ eventId: id, userId: user._id }))
-      .unwrap()
-      .then(() => message.success("Left event successfully"))
+    dispatch(leaveEventAsync({ id: id, userId: user._id }))
+      .then(() => {
+        dispatch(getAllEvents());
+        message.success("Left event successfully");
+      })
       .catch(() => message.error("Something went wrong"));
   };
 
@@ -77,28 +84,58 @@ const SingleEvent = () => {
       <h1>{event.title}</h1>
       <p>{event.description}</p>
 
-      <p><FontAwesomeIcon icon={faCalendar} /> Date: {new Date(event.date).toLocaleDateString()}</p>
-      <p><FontAwesomeIcon icon={faLocationDot} /> Location: {event.location}</p>
-      <p><FontAwesomeIcon icon={faClock} /> Duration: {event.duration} minutes</p>
-      <p><FontAwesomeIcon icon={faBullseye} /> Max Attendees: {event.maxAttendees}</p>
-      <p><FontAwesomeIcon icon={faUser} /> Current Attendees: {event.attendees.length}</p>
+      <p>
+        <FontAwesomeIcon icon={faCalendar} /> Date:{" "}
+        {new Date(event.date).toLocaleDateString()}
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faLocationDot} /> Location: {event.location}
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faClock} /> Duration: {event.duration} minutes
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faBullseye} /> Max Attendees:{" "}
+        {event.maxAttendees}
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faUser} /> Current Attendees:{" "}
+        {event.attendees.length}
+      </p>
 
       <div className="event-creator">
-        <FontAwesomeIcon icon={faCrown} style={{ color: "gold", marginRight: "5px" }} />
+        <FontAwesomeIcon
+          icon={faCrown}
+          style={{ color: "gold", marginRight: "5px" }}
+        />
         <strong>Creator: </strong>
         {event?.creator?.firstName} {event?.creator?.lastName}
       </div>
 
       {isCreator ? (
-        <Button type="primary" danger onClick={handleDelete} icon={<FontAwesomeIcon icon={faTrash} />}>
+        <Button
+          type="primary"
+          danger
+          onClick={handleDelete}
+          icon={<FontAwesomeIcon icon={faTrash} />}
+        >
           Delete Event
         </Button>
       ) : isJoined ? (
-        <Button type="primary" danger onClick={handleLeave} icon={<FontAwesomeIcon icon={faMinus} />}>
+        <Button
+          type="primary"
+          danger
+          onClick={handleLeave}
+          icon={<FontAwesomeIcon icon={faMinus} />}
+        >
           Leave Event
         </Button>
       ) : (
-        <Button type="primary" onClick={handleJoin} icon={<FontAwesomeIcon icon={faPlus} />}>
+        <Button
+          type="primary"
+          onClick={handleJoin}
+          icon={<FontAwesomeIcon icon={faPlus} />}
+        >
           Join Event
         </Button>
       )}

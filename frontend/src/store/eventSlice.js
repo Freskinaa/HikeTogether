@@ -56,7 +56,7 @@ export const createEventAsync = createAsyncThunk(
 
 export const updateEventAsync = createAsyncThunk(
   "event/updateEvent",
-  async (id, eventData, { rejectWithValue }) => {
+  async ({id, eventData}, { rejectWithValue }) => {
     try {
       const response = await UpdateEventUseCase.execute(id, eventData);
       console.log(response);
@@ -85,7 +85,7 @@ export const deleteEventAsync = createAsyncThunk(
 
 export const joinEventAsync = createAsyncThunk(
   "event/joinEvent",
-  async (id, userId, { rejectWithValue }) => {
+  async ({id, userId}, { rejectWithValue }) => {
     try {
       const response = await JoinEventUseCase.execute(id, userId);
       console.log(response);
@@ -100,7 +100,7 @@ export const joinEventAsync = createAsyncThunk(
 
 export const leaveEventAsync = createAsyncThunk(
   "event/leaveEvent",
-  async (id, userId, { rejectWithValue }) => {
+  async ({id, userId}, { rejectWithValue }) => {
     try {
       const response = await LeaveEventUseCase.execute(id, userId);
       return response;
