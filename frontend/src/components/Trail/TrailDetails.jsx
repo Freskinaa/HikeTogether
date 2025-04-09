@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./trailDetails.scss";
-
+// The TrailDetails component is used to display the details of a trail, 
+// with a dynamic fade effect as the user scrolls down the page.
 const TrailDetails = ({ trail }) => {
   const [isFading, setIsFading] = useState(false);
 

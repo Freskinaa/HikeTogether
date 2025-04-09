@@ -1,6 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { GetAllTrailsUseCase } from "../use-cases/GetAllTrailsUseCase";
+// Redux slice for managing trails state.
+// This slice includes actions for getting all trails and handling the loading state, errors, and storing fetched trails.
+// The `getAllTrails` action is asynchronous and uses the `GetAllTrailsUseCase` to fetch the data from the service layer
 
+// Async thunk for fetching all trails
+// It calls the GetAllTrailsUseCase and handles the async logic, including error handling.
+// The `rejectWithValue` function is used to return a custom error message if the request fails.
+// The `execute` method of the use case is called to perform the actual data fetching.
+// The `getAllTrails` action is dispatched to fetch all trails from the server.
+// The async action handles the loading state and errors using the `extraReducers` in the slice.
 export const getAllTrails = createAsyncThunk(
   "trail/getAllTrails",
   async (_, { rejectWithValue }) => {

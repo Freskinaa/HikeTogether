@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+// Defines the User schema and model.
+// - Stores user info including name, email, password, personal details, and events the user is attending.
+// - Includes validation for email, password, age, and gender.
+
 const User = new mongoose.Schema({
   firstName: {
     type: String,

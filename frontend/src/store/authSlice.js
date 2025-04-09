@@ -2,7 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RegisterUseCase } from '../use-cases/RegisterUseCase';
 import { LoginUseCase } from '../use-cases/LoginUseCase';
 import { GetUserByIdUseCase } from '../use-cases/GetUserByIdUseCase';
-
+// This code defines Redux slice for authentication, including actions for registering, logging in, fetching user by ID, 
+// and restoring session from local storage. The actions are asynchronous (using createAsyncThunk) and interact with use cases 
+// like RegisterUseCase, LoginUseCase, and GetUserByIdUseCase to handle the respective authentication operations.
+// The state includes properties for the user, tokens, loading state, registration status, and error handling.
+// The extraReducers handle the async actions for login, registration, fetching user data, and session restoration.
 export const registerUser = createAsyncThunk(
   'auth/register',
   async (userData, { rejectWithValue }) => {
@@ -64,7 +68,9 @@ export const restoreSession = createAsyncThunk(
     }
   }
 )
-
+// The authSlice handles the state for authentication, including user data, tokens, and error handling.
+// It also includes actions for logging out and handling async actions from createAsyncThunk.
+// The slice is created using createSlice from Redux Toolkit, which simplifies the process of creating reducers and actions
 const authSlice = createSlice({
   name: 'auth',
   initialState: {

@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 import TrailModel from "./Trail.js";
 import UserModel from "./User.js";
 
+
+// Defines the Event schema and model.
+// - Stores data about events, including title, date, trail, creator, attendees, and status.
+// - Automatically sets default values and pulls related trail and user info when a new event is created.
+
+
 const Event = new mongoose.Schema({
   trail: {
     type: mongoose.Schema.Types.ObjectId,
@@ -13,6 +19,18 @@ const Event = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
   attendees: [
     {
       _id: String,
@@ -20,10 +38,6 @@ const Event = new mongoose.Schema({
       lastName: String,
     }
   ],
-  date: {
-    type: Date,
-    required: true,
-  },
   location: {
     type: String,
   },
@@ -35,14 +49,8 @@ const Event = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["active", "canceled", "completed"],
+    enum: ["active", "inactive", "completed"],
     default: "active",
-  },
-  title: {
-    type: String,
-  },
-  description: {
-    type: String,
   },
 });
 
@@ -53,7 +61,11 @@ Event.pre("save", async function (next) {
 
     if (trail) {
       this.duration = trail.duration;
+      this.location = trail.location;
     }
+
+    this.status = "active";
+    this.maxAttendees = 10;
 
     this.attendees.push({
       _id: user?._id,
@@ -61,6 +73,7 @@ Event.pre("save", async function (next) {
       lastName: user?.lastName,
     });
   }
+  
   next();
 });
 

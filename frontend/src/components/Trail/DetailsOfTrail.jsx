@@ -1,5 +1,15 @@
 import React from "react";
 import "./detailsOfTrail.scss";
+// The DetailsOfTrail component displays detailed information about a single trail, 
+// including its length, elevation gain, and difficulty level.
+// It is styled using SCSS and is part of a larger application that likely includes
+
+
+
+
+// other components for displaying trails and their details.
+// The component receives a `trail` prop, which contains the trail's details,
+// and uses that data to populate the relevant sections of the UI.
 
 const DetailsOfTrail = ({ trail }) => {
   return (

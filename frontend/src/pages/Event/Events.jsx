@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useSelector , useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, message } from "antd";
 import "./event.scss";
 import EventCard from "../../components/Event/EventCard";
-import { getAllEvents } from '../../store/eventSlice';
+import { getAllEvents } from "../../store/eventSlice";
 
 const Events = () => {
-  const dispatch = useDispatch()
-  const {events} = useSelector((state) => state.event);
+  const dispatch = useDispatch();
+  const { events } = useSelector((state) => state.event);
   const [allEvents, setAllEvents] = useState([]);
   const [visibleEvents, setVisibleEvents] = useState(10);
 
-
   useEffect(() => {
-    dispatch(getAllEvents())
+    dispatch(getAllEvents());
   }, [dispatch]);
 
   useEffect(() => {
-    if(events) {
-      setAllEvents(events)
+    if (events) {
+      setAllEvents(events);
     }
-  }, [events])
+  }, [events]);
 
   const loadMoreEvents = () => {
     setVisibleEvents((prevVisibleEvents) => prevVisibleEvents + 10);
@@ -28,14 +27,19 @@ const Events = () => {
 
   const eventsToShow = allEvents.slice(0, visibleEvents);
 
+  if (events.length === 0) {
+    return (
+      <div className="no-events">
+        <h3>No events found.</h3>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="event-card-container-one">
         {eventsToShow.map((event, index) => (
-          <EventCard
-            event={event}
-            key={index}
-          />
+          <EventCard event={event} key={index} />
         ))}
       </div>
       {visibleEvents < allEvents.length && (

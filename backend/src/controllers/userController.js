@@ -1,6 +1,9 @@
 import userService from "../services/userService.js";
 import { HTTP_CODE } from "../enums/http-status-codes.js";
 
+// Controller functions for handling user-related operations.
+// These include CRUD operations, authentication, and token refresh handling.
+
 export const getAllUsers = async (req, res, next) => {
   try {
     const users = await userService.getAllUsers();

@@ -9,17 +9,19 @@ import NumberIncrement from "./NumberIncrement";
 import {useDispatch, useSelector} from 'react-redux'
 import {getAllTrails} from '../../../store/trailSlice'
 import {getAllEvents} from '../../../store/eventSlice'
+import { getAllUsersAsync } from "../../../store/userSlice";
 
 const Banner = () => {
   const [bannerImg, setBannerImg] = useState(banner1);
   const [activeBullet, setActiveBullet] = useState(0);
   const [trailsLength, setTrailsLength] = useState(0);
-  const [usersLength, setUsersLength] = useState(3);
+  const [usersLength, setUsersLength] = useState(0);
   const [eventsLength, setEventsLength] = useState(100);
   const [transition, setTransition] = useState(false)
   const dispatch = useDispatch()
   const {trails} = useSelector(state=> state.trail)
   const {events} = useSelector(state=> state.event)
+  const {users} = useSelector(state=> state.user)
 
   useEffect(() => {
     if(trails) {
@@ -34,8 +36,15 @@ const Banner = () => {
   }, [events])
 
   useEffect(() => {
+    if(users) {
+      setUsersLength(users.length)
+    }
+  }, [users])
+
+  useEffect(() => {
     dispatch(getAllTrails())
     dispatch(getAllEvents())
+    dispatch(getAllUsersAsync())
   }, [dispatch])
 
   const sliderImages = [
