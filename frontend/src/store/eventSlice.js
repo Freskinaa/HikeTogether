@@ -4,6 +4,8 @@ import { CreateEventUseCase } from "../use-cases/CreateEventUseCase";
 import { DeleteEventUseCase } from "../use-cases/DeleteEventUseCase";
 import { UpdateEventUseCase } from "../use-cases/UpdateEventUseCase";
 import { GetEventByIdUseCase } from "../use-cases/GetEventByIdUseCase";
+import { JoinEventUseCase } from "../use-cases/JoinEventUseCase";
+import { LeaveEventUseCase } from "../use-cases/LeaveEventUseCase";
 
 // Async thunk for fetching all events
 export const getAllEvents = createAsyncThunk(
@@ -81,6 +83,34 @@ export const deleteEventAsync = createAsyncThunk(
   }
 );
 
+export const joinEventAsync = createAsyncThunk(
+  "event/joinEvent",
+  async (id, userId, { rejectWithValue }) => {
+    try {
+      const response = await JoinEventUseCase.execute(id, userId);
+      console.log(response);
+      return response;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Cannot join event"
+      );
+    }
+  }
+);
+
+export const leaveEventAsync = createAsyncThunk(
+  "event/leaveEvent",
+  async (id, userId, { rejectWithValue }) => {
+    try {
+      const response = await LeaveEventUseCase.execute(id, userId);
+      return response;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Cannot update event"
+      );
+    }
+  }
+);
 const eventSlice = createSlice({
   name: "event",
   initialState: {
@@ -155,6 +185,28 @@ const eventSlice = createSlice({
         state.loading = false;
       })
       .addCase(getEventById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(joinEventAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(joinEventAsync.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(getEjoinEventAsyncventById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(leaveEventAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(leaveEventAsync.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(leaveEventAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
