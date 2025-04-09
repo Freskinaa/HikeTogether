@@ -1,0 +1,57 @@
+@import '../../styles/global.scss';
+
+.user-profile-container {
+  background-color: $primary-background-color;
+  color: $font-color;
+  font-family: $font-family;
+  padding: 3rem;
+  position: relative;
+  top: -80px;
+
+  @include small-screen-and-more {
+    padding: 5rem;
+  }
+
+  .user-profile-content {
+    width: 100%;
+    margin-top: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: $secondary-background-color;
+    border-radius: 10px;
+    border: 2px solid $secondary-background-color;
+
+    .left-up-content {
+      width: 20%;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background-color: $lighter-background-color;
+      padding: 2rem;
+    }
+
+    .right-up-content {
+      padding: 2rem;
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .user-profile-container {
+    .user-profile-content {
+      flex-direction: column;
+
+      .left-up-content,
+      .right-up-content {
+        width: 100%;
+      }
+
+      .left-up-content {
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.fields-to-complete-container {
+    margin-top: 2rem;
+    width: 100%;
+    height: inherit;
+
+    .fields-to-complete-content {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+}

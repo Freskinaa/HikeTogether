@@ -117,3 +117,16 @@
     }
   }
 }
+
+.no-events {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+
+  h3{
+    text-align: center;
+    color: #fff;
+    font-size: 32px;
+  }
+}

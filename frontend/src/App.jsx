@@ -12,11 +12,6 @@ function App() {
   const isLoading = useSelector((state) => state.auth.loading);
 
   useEffect(() => {
-    console.log(accessToken);
-    
-  }, [accessToken])
-
-  useEffect(() => {
     dispatch(restoreSession());
   }, [dispatch]);
 

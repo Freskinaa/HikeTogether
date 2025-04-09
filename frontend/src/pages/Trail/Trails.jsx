@@ -52,11 +52,6 @@ const Trails = () => {
     }
   };
 
-  const handleSortOrder = () => {
-    setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    setFilteredTrails(filteredTrails.reverse());
-  };
-
   const handleLoadMore = () => {
     setDisplayedTrails((prevCount) => prevCount + 3);
   };
@@ -194,15 +189,6 @@ const Trails = () => {
                 >
                   Hard
                 </li>
-                <div className="trail-category order" onClick={handleSortOrder}>
-                  {sortDirection === "asc" ? (
-                    <FontAwesomeIcon icon={faSortUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faSortDown} />
-                  )}
-                </div>
-
-               
               </ul>
               <div className="other-filters">
               <select

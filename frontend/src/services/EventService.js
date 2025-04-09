@@ -5,6 +5,10 @@ export class EventService {
     return await new ApiClient().post('/events', eventData);
   }
 
+  static async updateEvent(id, eventData) {
+    return await new ApiClient().put(`/events/${id}`, eventData);
+  }
+
   static async getEventById(id) {
     return await new ApiClient().get(`/events/${id}`);
   }

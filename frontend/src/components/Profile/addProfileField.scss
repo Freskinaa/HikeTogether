@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+
+.add-profile-field {
+    background-color: $primary-background-color;
+    height: 100%;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    min-width: 11.5rem;
+
+    .field-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        .profile-field-title {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .profile-field-logo {
+            background-color: $lighter-background-color;
+            border-radius: 50%;
+            border: 1px solid $secondary-background-color;
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .field-icon {
+                font-size: 1.5rem;
+            }
+        }
+
+        .basic-btn { 
+            &.green {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.75rem;
+            }
+        }
+    }
+}
+
+
+@media (max-width:768px) {
+    .add-profile-field {
+        .field-content {
+            min-height: 15rem;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+@import "../../styles/variables.scss";
+
+.profile-navbar {
+    
+    .profile-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .profile-link {
+            list-style-type: none;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+            transition: color 0.3s ease-in-out;
+            cursor: pointer;
+
+            a, span {
+                text-decoration: none;
+                color: $font-color;
+                margin-left: 1rem;
+                transition: color 0.3s ease-in-out;
+            }
+
+            &.active, &:hover {
+                color: $primary-green;
+                a, span {
+                    color: $primary-green;
+                }
+            }
+        }
+    }
+
+    .profile-burger-menu {
+        display: none;
+    }
+}
+
+@media (max-width:1024px) {
+    .profile-navbar {
+        position: relative;
+
+        .profile-links {
+            opacity: 0;
+            overflow: hidden;
+            height: 1.2rem;
+            transition: all 0.3s ease-in-out;
+            
+            &.open {
+                height: auto;
+                opacity: 1;
+            }
+        }
+
+        .profile-burger-menu {
+            display: flex;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            font-size: 1.4rem;
+            transition: all 0.3s ease-in-out;
+
+            &.rotate {
+                transform: rotate(-45deg);
+            }
+
+            &:hover {
+                color: $primary-green;
+            }
+        }
+    }
+}
