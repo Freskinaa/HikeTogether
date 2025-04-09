@@ -16,6 +16,7 @@ const Trails = lazy(() => import("../pages/Trail/Trails"));
 const Events = lazy(() => import("../pages/Event/Events"));
 const SingleTrail = lazy(() => import("../pages/Trail/SingleTrail"));
 
+// Used React's lazy function to dynamically import the components for the public routes
 const PublicRoutes = () => {
   return {
     element: <Layout />,
@@ -108,4 +109,6 @@ const PublicRoutes = () => {
   };
 };
 
+// The `PublicRoutes` function returns an object that defines the public routes for the application.
+// Each route is defined with a path and a corresponding component that will be loaded when the route is accessed
 export default PublicRoutes;

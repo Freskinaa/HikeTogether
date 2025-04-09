@@ -5,6 +5,11 @@ import { restoreSession } from "./store/authSlice";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
 import "./App.css";
+// App Component
+// This component handles the routing and session restoration for the app.
+// It checks if the user has an access token, and based on that, it either 
+// renders public or private routes. It also manages loading state while 
+// the session is being restored.
 
 function App() {
   const dispatch = useDispatch();

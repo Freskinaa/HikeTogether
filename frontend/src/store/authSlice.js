@@ -70,6 +70,7 @@ export const restoreSession = createAsyncThunk(
 )
 // The authSlice handles the state for authentication, including user data, tokens, and error handling.
 // It also includes actions for logging out and handling async actions from createAsyncThunk.
+// The slice is created using createSlice from Redux Toolkit, which simplifies the process of creating reducers and actions
 const authSlice = createSlice({
   name: 'auth',
   initialState: {

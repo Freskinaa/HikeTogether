@@ -20,6 +20,7 @@ const Layout = () => {
     return <Navigate to='/' replace />;
   }
 
+  // Check if the user is logged in and trying to access login or signup page
   return (
     <div className='app'>
         {!navShouldBeHidden && <Navbar />}

@@ -36,4 +36,5 @@ const PrivateRoutes = () => {
   };
 };
 
+// The `PrivateRoutes` function returns an object that defines the private routes for the application.
 export default PrivateRoutes
