@@ -1,4 +1,6 @@
 import trailService from "../services/trailService.js";
+// Controller functions for managing trail data.
+// Includes operations to create, read, update, and delete trail records.
 
 export const getAllTrails = async (req, res, next) => {
   try {

@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 import EventModel from "../models/Event.js";
 import UserModel from "../models/User.js";
 import TrailModel from "../models/Trail.js";
+// EventRepository handles operations related to events, including:
+// - Creating, updating, and deleting events
+// - Joining and leaving events for users
+// - Retrieving events with status updates based on attendees and date
 
 class EventRepository {
   async createEvent(eventData) {

@@ -7,7 +7,10 @@ import { LiaMountainSolid } from "react-icons/lia";
 import Buttoni from "../../components/Shared/Button/Button";
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from "../../store/authSlice";
-
+// The SignUp component handles user registration. It includes form fields for the user's first name, last name, email, 
+// password, and confirm password. Validation is applied to ensure correct input format, and upon successful submission,
+// it dispatches a register action. The component also handles error messages and redirects to the login page once the user 
+// is successfully registered.
 const SignUp = () => {
   const [form] = Form.useForm();
   const [errorMessage, setErrorMessage] = useState("");

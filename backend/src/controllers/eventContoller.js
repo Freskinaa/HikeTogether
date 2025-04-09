@@ -1,5 +1,6 @@
 import eventService from "../services/eventService.js";
-
+// Controller functions for handling event-related HTTP requests.
+// Uses eventService to interact with the database and sends responses.
 export const getAllEvents = async (req, res, next) => {
   try {
     const events = await eventService.getAllEvents();
