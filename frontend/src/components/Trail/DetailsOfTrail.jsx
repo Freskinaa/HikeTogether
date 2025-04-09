@@ -1,6 +1,7 @@
 import React from "react";
 import "./detailsOfTrail.scss";
 
+
 const DetailsOfTrail = ({ trail }) => {
   return (
     <div className="details-of-single-trail">

@@ -5,6 +5,7 @@ import { DeleteEventUseCase } from "../use-cases/DeleteEventUseCase";
 import { UpdateEventUseCase } from "../use-cases/UpdateEventUseCase";
 import { GetEventByIdUseCase } from "../use-cases/GetEventByIdUseCase";
 
+// Async thunk for fetching all events
 export const getAllEvents = createAsyncThunk(
   "event/getAllEvents",
   async (_, { rejectWithValue }) => {
@@ -31,6 +32,10 @@ export const getEventById = createAsyncThunk(
   }
 );
 
+
+// Async thunk for creating a new event
+// It calls the CreateEventUseCase and handles the async logic, including error handling.
+// The `rejectWithValue` function is used to return a custom error message if the request fails.
 
 export const createEventAsync = createAsyncThunk(
   "event/createEvent",
