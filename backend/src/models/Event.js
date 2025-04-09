@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 import TrailModel from "./Trail.js";
 import UserModel from "./User.js";
 
+
+// Defines the Event schema and model.
+// - Stores data about events, including title, date, trail, creator, attendees, and status.
+// - Automatically sets default values and pulls related trail and user info when a new event is created.
+
+
 const Event = new mongoose.Schema({
   trail: {
     type: mongoose.Schema.Types.ObjectId,

@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import config from '../config.js';
-
+// Middleware to protect routes using JWT authentication.
+// - Verifies token from Authorization header.
+// - Attaches decoded user info to request if valid.
 const authMiddleware = (req, res, next) => {
   const token = req.header('Authorization')?.split(' ')[1];
 

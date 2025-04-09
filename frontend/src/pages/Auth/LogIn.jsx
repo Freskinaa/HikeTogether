@@ -6,7 +6,10 @@ import { LiaMountainSolid } from 'react-icons/lia';
 import Button from '../../components/Shared/Button/Button';
 import "./login.scss";
 import { loginUser } from '../../store/authSlice';
-
+// The Login component is responsible for handling the user login functionality.
+// It includes a form with fields for email and password, validation logic, and 
+// error handling. Upon successful submission, it dispatches the login action.
+// If the user is already logged in, they are redirected to the homepage.
 const Login = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
