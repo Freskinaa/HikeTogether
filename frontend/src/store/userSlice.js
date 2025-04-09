@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { GetAllUsersUseCase } from "../use-cases/GetAllUsersUseCase";
+// This code defines a Redux slice for managing user-related actions and state. 
+// It includes an asynchronous action for fetching all users using the GetAllUsersUseCase.
+// The slice handles the loading state, error handling, and storing the fetched users' data in the Redux store.
 
 export const getAllUsersAsync = createAsyncThunk(
   "user/getAllUsers",
@@ -13,6 +16,7 @@ export const getAllUsersAsync = createAsyncThunk(
     }
   }
 );
+// The userSlice handles the state for user data, including the list of users, loading state, and error state.
 
 const userSlice = createSlice({
   name: "user",
