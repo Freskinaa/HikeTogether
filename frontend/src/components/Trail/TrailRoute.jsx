@@ -1,5 +1,13 @@
 import React, { useMemo } from "react";
 import "./trailRoute.scss";
+// The TrailRoute component is used to display an embedded Google Maps iframe 
+// showing the trail's location based on the trail's name and location.
+// It takes a `trail` prop, which contains the trail's details, and constructs
+
+// a Google Maps URL using the trail's name and location. 
+
+
+
 
 const TrailRoute = ({ trail }) => {
   const mapUrl = useMemo(() => {
