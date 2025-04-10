@@ -16,7 +16,7 @@ const EventCard = ({
   const eventDate = moment(event?.date).format("DD/MM/YYYY");
 
   const handleTrailClick = () => {
-    navigate(`/trails/${event.trail._id}`);
+    navigate(`/events/${event._id}`);
   };
 
   return (

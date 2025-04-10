@@ -80,6 +80,7 @@ const TrailEvents = () => {
                   ?.map((event) => (
                     <EventCard
                       key={event._id}
+                      id={event._id}
                       img={event.trail?.photos[0]}
                       duration={{
                         count: formatDuration(event.duration),

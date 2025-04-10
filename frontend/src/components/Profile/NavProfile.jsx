@@ -4,14 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket, faCalendarDays, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from "react-redux";
 import { logout } from '../../store/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const NavProfile = ({ section }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [activeSection, setActiveSection] = useState('Profile');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch(logout())
+    navigate('/login')
+    
   };
 
   const handleSection = (selectedSection) => {
