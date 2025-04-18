@@ -15,6 +15,7 @@ const Home = lazy(() => import("../pages/Home/Home"));
 const Trails = lazy(() => import("../pages/Trail/Trails"));
 const Events = lazy(() => import("../pages/Event/Events"));
 const SingleTrail = lazy(() => import("../pages/Trail/SingleTrail"));
+const SingleEvent = lazy(() => import("../pages/Event/SingleEvent"));
 
 // Used React's lazy function to dynamically import the components for the public routes
 const PublicRoutes = () => {
@@ -102,6 +103,20 @@ const PublicRoutes = () => {
             }
           >
             <Events />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/events/:id",
+        element: (
+          <Suspense
+            fallback={
+              <div>
+                <LazyLoading />
+              </div>
+            }
+          >
+            <SingleEvent />
           </Suspense>
         ),
       },
