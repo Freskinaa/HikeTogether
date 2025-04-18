@@ -34,12 +34,12 @@ const ProfileCard = ({ useri }) => {
             </div>
           )}
         </div>
-        <Button
+        {/* <Button
           className="basic-btn"
           type="button"
         >
           Edit profile
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
