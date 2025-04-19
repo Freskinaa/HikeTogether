@@ -1,10 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import mongoose from 'mongoose';
-import EventModel from '../../models/Event'; // Update with the correct path
-import * as TrailModel from '../../models/Trail'; // Import as a module
-import * as UserModel from '../../models/User'; // Import as a module
+import EventModel from '../../models/Event'; 
+import * as TrailModel from '../../models/Trail'; 
+import * as UserModel from '../../models/User';
 
-// Mock the models correctly, ensuring findById is available
 vi.mock('../../models/Trail', () => ({
   findById: vi.fn(),
 }));
@@ -18,16 +17,15 @@ describe('Event Model', () => {
 
   it('should handle missing trail or creator data', async () => {
     const mockEventData = {
-      trail: 'mockInvalidTrailId', // Invalid trail
+      trail: 'mockInvalidTrailId', 
       creator: { _id: 'mockUserId' },
       title: 'Hiking Adventure',
       description: 'A fun hiking event.',
       date: new Date(),
     };
 
-    // Mock Trail and User data retrieval
-    TrailModel.findById.mockResolvedValue(null); // Invalid trail
-    UserModel.findById.mockResolvedValue(null); // Invalid user
+    TrailModel.findById.mockResolvedValue(null); 
+    UserModel.findById.mockResolvedValue(null); 
 
     const createdEvent = new EventModel(mockEventData);
     const saveMock = vi.fn().mockRejectedValue(new Error('ValidationError: Trail or User not found'));
@@ -47,7 +45,7 @@ describe('Event Model', () => {
 
     await createdEvent.save();
 
-    expect(createdEvent.status).toBe('inactive'); // Ensure that it doesn't override status when not new
+    expect(createdEvent.status).toBe('inactive'); 
   });
 
   it('should throw error if title or description is missing', async () => {
@@ -55,7 +53,6 @@ describe('Event Model', () => {
       trail: 'mockTrailId',
       creator: { _id: 'mockUserId' },
       date: new Date(),
-      // Missing title and description
     };
 
     const createdEvent = new EventModel(mockEventData);

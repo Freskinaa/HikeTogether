@@ -1,8 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import mongoose from 'mongoose';
-import TrailModel from '../../models/Trail'; // Update with the correct path
+import TrailModel from '../../models/Trail'; 
 
-// Mock Mongoose model methods
 vi.mock('mongoose', async () => {
   const actualMongoose = await vi.importActual('mongoose');
   return {
@@ -63,7 +62,7 @@ describe('Trail Model', () => {
     const invalidTrailData = {
       name: 'Test Trail',
       location: 'Test Location',
-      difficulty: 'extreme', // Invalid enum value
+      difficulty: 'extreme', 
       length: '4 km',
       photos: ['photo1.jpg'],
     };
