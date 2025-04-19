@@ -18,7 +18,7 @@ router.post('/refresh-token', refreshToken);
 
 router.get('/', getAllUsers);
 router.get('/:id', authMiddleware, getUserById);
-router.get('/:id', authMiddleware, updateUser);
-router.get('/:id', authMiddleware, deleteUser);
+router.put('/:id', authMiddleware, updateUser);
+router.delete('/:id', authMiddleware, deleteUser);
 
 export default router;
