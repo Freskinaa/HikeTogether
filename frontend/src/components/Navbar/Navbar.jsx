@@ -103,7 +103,7 @@ const Navbar = () => {
                 to="/profile"
                 style={{ color: isActive("/profile") ? "#43815c" : "" }}
               >
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faUser} data-testid="user-icon"/>
               </Link>
             </div>
           )}

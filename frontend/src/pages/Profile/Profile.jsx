@@ -7,12 +7,6 @@ import ListComponent from "../../components/Profile/ListComponent";
 import { useNavigate } from "react-router-dom";
 import { getEventById } from "../../store/eventSlice";
 
-// This is the Profile component, which represents the user profile page.
-// It includes functionality to display the user's profile, their joined events, 
-// and to calculate the profile completion percentage based on the user's data.
-// The component uses Redux for state management and React Router for navigation
-
-
 
 const Profile = () => {
   const user = useSelector((state) => state.auth.user);
@@ -26,8 +20,6 @@ const Profile = () => {
   useEffect(() => {
     calculateProfileCompletion();
   }, [user]);
-
-
 
   useEffect(() => {
     if (user && user._id) {
@@ -55,15 +47,12 @@ const Profile = () => {
   };
 
   const calculateProfileCompletion = () => {
-    const excludedFields = [
-      "eventsAttending",
-      "_id",
-      "__v",
-    ];
-    let totalFields =
-      Object.keys(user).length -
-      excludedFields.length +
-      Object.keys(user.socialMedia).length;
+    const excludedFields = ["eventsAttending", "_id", "__v"];
+    let totalFields = Object.keys(user).length - excludedFields.length;
+
+    if (user.socialMedia) {
+      totalFields += Object.keys(user.socialMedia).length;
+    }
     let filledFields = 0;
     let fieldsToFill = [];
 

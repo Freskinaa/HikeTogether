@@ -48,7 +48,6 @@ const SingleEvent = () => {
 
   const handleJoin = () => {
     dispatch(joinEventAsync({ id: id, userId: user._id }))
-      .unwrap()
       .then(() => {
         dispatch(getAllEvents());
         message.success("Joined successfully");
