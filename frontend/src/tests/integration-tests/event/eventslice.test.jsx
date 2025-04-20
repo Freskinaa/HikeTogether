@@ -8,25 +8,25 @@ import eventReducer, {
 import { vi } from "vitest";
 
 // Mock the use cases
-vi.mock("../../use-cases/GetAllEventsUseCase", () => ({
+vi.mock("../../../use-cases/GetAllEventsUseCase", () => ({
   GetAllEventsUseCase: {
     execute: vi.fn(),
   },
 }));
 
-vi.mock("../../use-cases/CreateEventUseCase", () => ({
+vi.mock("../../../use-cases/CreateEventUseCase", () => ({
   CreateEventUseCase: {
     execute: vi.fn(),
   },
 }));
 
-vi.mock("../../use-cases/DeleteEventUseCase", () => ({
+vi.mock("../../../use-cases/DeleteEventUseCase", () => ({
   DeleteEventUseCase: {
     execute: vi.fn(),
   },
 }));
 
-vi.mock("../../use-cases/GetEventByIdUseCase", () => ({
+vi.mock("../../../use-cases/GetEventByIdUseCase", () => ({
   GetEventByIdUseCase: {
     execute: vi.fn(),
   },
@@ -41,6 +41,7 @@ describe("eventSlice Integration Test", () => {
         event: eventReducer,
       },
     });
+    vi.clearAllMocks();
   });
 
   it("fetches all events successfully", async () => {
