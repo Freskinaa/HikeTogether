@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import UserRepository from '../../repository/userRepository';
-import * as UserModelModule from '../../models/User'; 
+import UserRepository from '../../../repository/userRepository';
+import * as UserModelModule from '../../../models/User'; 
 
 vi.mock('../../models/User', () => ({
   default: {
