@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import SingleEvent from "../../pages/Event/SingleEvent";
+import SingleEvent from "../../../pages/Event/SingleEvent";
 import { vi } from "vitest";
 import React from "react";
 

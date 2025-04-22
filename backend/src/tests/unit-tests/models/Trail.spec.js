@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import mongoose from 'mongoose';
-import TrailModel from '../../models/Trail'; 
+import TrailModel from '../../../models/Trail'; 
 
 vi.mock('mongoose', async () => {
   const actualMongoose = await vi.importActual('mongoose');

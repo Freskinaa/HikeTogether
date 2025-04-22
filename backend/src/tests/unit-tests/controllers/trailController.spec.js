@@ -1,5 +1,5 @@
-import * as trailController from '../../controllers/trailController.js';
-import trailService from '../../services/trailService.js';
+import * as trailController from '../../../controllers/trailController.js';
+import trailService from '../../../services/trailService.js';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 describe('TrailController', () => {

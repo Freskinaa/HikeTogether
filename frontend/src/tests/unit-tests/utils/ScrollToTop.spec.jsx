@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import ScrollToTop from '../../utils/ScrollToTop';
+import ScrollToTop from '../../../utils/ScrollToTop';
 import { vi } from 'vitest';
 
 vi.stubGlobal('scrollTo', vi.fn());
