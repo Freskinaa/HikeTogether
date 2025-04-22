@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import SelectField from '../../../components/Shared/SelectField/SelectField';
+import SelectField from '../../../../components/Shared/SelectField/SelectField';
 
 const options = [
   { label: 'Select an option', value: '' },
