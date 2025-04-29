@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import LazyLoading from '../../utils/LazyLoading';
+import LazyLoading from '../../../utils/LazyLoading';
 
 describe('LazyLoading Component', () => {
   it('should render the loading container and spinner', () => {

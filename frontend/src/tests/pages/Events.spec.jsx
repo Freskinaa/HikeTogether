@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Events from '../../pages/Event/Events';
+import Events from '../../../pages/Event/Events';
 import { useDispatch, useSelector } from 'react-redux';
 import { vi } from 'vitest';
 
@@ -8,7 +8,7 @@ vi.mock('react-redux', () => ({
   useSelector: vi.fn(),
 }));
 
-vi.mock('../../components/Event/EventCard', () => ({
+vi.mock('../../../components/Event/EventCard', () => ({
   default: ({ event }) => <div data-testid="event-card">{event.title}</div>,
 }));
 

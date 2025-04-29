@@ -2,8 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer, { loginUser } from '../../store/authSlice';
-import Login from '../../pages/Auth/LogIn';
+import authReducer, { loginUser } from '../../../store/authSlice';
+import Login from '../../../pages/Auth/LogIn';
 import { MemoryRouter } from 'react-router-dom';
 
 const navigateMock = vi.fn();
@@ -16,7 +16,7 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-vi.mock('../../store/authSlice', async (importOriginal) => {
+vi.mock('../../../store/authSlice', async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual,
