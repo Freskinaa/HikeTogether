@@ -10,6 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^26.1.0",
+    "mongodb-memory-server": "^10.1.4",
+    "redux-mock-store": "^1.5.5",
+    "sass-embedded": "^1.86.3",
+    "vitest": "^3.1.1"
   }
 }
