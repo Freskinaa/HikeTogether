@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import TrailService from '../../../services/trailService';
 import * as trailRepository from '../../../repository/trailRepository';
 
-vi.mock('../../repository/trailRepository', () => ({
+vi.mock('../../../repository/trailRepository', () => ({
   __esModule: true, 
   default: {
     findAll: vi.fn(),
