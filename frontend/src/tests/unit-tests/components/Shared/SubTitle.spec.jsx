@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import SubTitle from '../../../components/Shared/Subtitle/SubTitle';
+import SubTitle from '../../../../components/Shared/Subtitle/SubTitle';
 
 describe('SubTitle component', () => {
   it('renders the provided text', () => {

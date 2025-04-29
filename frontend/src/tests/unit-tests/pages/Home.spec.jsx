@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Home from '../../pages/Home/Home';
+import Home from '../../../pages/Home/Home';
 import { vi } from 'vitest'; 
 
-vi.mock('../../components/Home/Banner/Banner', () => ({
+vi.mock('../../../components/Home/Banner/Banner', () => ({
   default: () => <div>Mocked Banner</div>, 
 }));
 
-vi.mock('../../components/Home/UpcomingEvents/UpcomingEvents', () => ({
+vi.mock('../../../components/Home/UpcomingEvents/UpcomingEvents', () => ({
   default: () => <div>Mocked UpcomingEvents</div>, 
 }));
 

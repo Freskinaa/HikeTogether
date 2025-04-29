@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import InputField from '../../../components/Shared/InputField/InputField';
+import InputField from '../../../../components/Shared/InputField/InputField';
 
 describe('InputField component', () => {
   it('renders with correct placeholder', () => {

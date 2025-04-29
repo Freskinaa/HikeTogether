@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import Modal from '../../../components/Shared/Modal/Modal';
+import Modal from '../../../../components/Shared/Modal/Modal';
 
 describe('Modal component', () => {
   it('renders children inside the modal', () => {

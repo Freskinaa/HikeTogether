@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
-import eventService from '../../services/eventService';  
-import * as eventRepository from '../../repository/eventRepository';
+import eventService from '../../../services/eventService';  
+import * as eventRepository from '../../../repository/eventRepository';
 
-vi.mock('../../repository/eventRepository', () => ({
+vi.mock('../../../repository/eventRepository', () => ({
   default: {
     createEvent: vi.fn(),
     updateEvent: vi.fn(),
