@@ -1,14 +1,14 @@
 import { describe, it, expect, vi } from 'vitest';
 import mongoose from 'mongoose';
-import EventModel from '../../models/Event'; 
-import * as TrailModel from '../../models/Trail'; 
-import * as UserModel from '../../models/User';
+import EventModel from '../../../models/Event'; 
+import * as TrailModel from '../../../models/Trail'; 
+import * as UserModel from '../../../models/User';
 
-vi.mock('../../models/Trail', () => ({
+vi.mock('../../../models/Trail', () => ({
   findById: vi.fn(),
 }));
 
-vi.mock('../../models/User', () => ({
+vi.mock('../../../models/User', () => ({
   findById: vi.fn(),
 }));
 

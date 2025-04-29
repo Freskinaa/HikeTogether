@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import BurgerNav from '../../../components/Navbar/BurgerNav'
+import BurgerNav from '../../../../components/Navbar/BurgerNav'
 const mockStore = createStore((state = { auth: { accesstoken: null } }) => state);
 
 describe('BurgerNav Component', () => {
