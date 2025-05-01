@@ -37,8 +37,7 @@ cd frontend
 npm install
 ```
 ### How to start the project?
-```npm run dev
-```
+- npm run dev
 
 ## Authors
 - Freskina Selimi  
