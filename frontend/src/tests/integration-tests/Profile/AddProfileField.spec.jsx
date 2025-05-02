@@ -5,10 +5,10 @@ import configureStore from "redux-mock-store";
 import AddProfileField from "../../../components/Profile/AddProfileField";
 import { vi } from "vitest";
 
-// Mock dependencies
 vi.mock("../../components/Shared/Button/Button", () => ({
   default: ({ children, ...props }) => <button {...props}>{children}</button>,
 }));
+
 vi.mock("../../components/Shared/Modal/Modal", () => ({
   default: ({ children, onClose }) => (
     <div>
@@ -19,9 +19,27 @@ vi.mock("../../components/Shared/Modal/Modal", () => ({
     </div>
   ),
 }));
+
 vi.mock("../../components/Shared/InputField/InputField", () => ({
   default: ({ value, onChange, ...props }) => (
     <input value={value} onChange={onChange} {...props} />
+  ),
+}));
+
+vi.mock("../../components/Shared/SelectField/SelectField", () => ({
+  default: ({ value, onChange, options, ...props }) => (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      role="combobox"
+      {...props}
+    >
+      {options.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
   ),
 }));
 
@@ -41,27 +59,38 @@ describe("AddProfileField Integration Test", () => {
     });
   });
 
-  it.skip("closes the modal when the close button is clicked", () => {
+  it("updates text input field inside the modal", () => {
+    render(
+      <Provider store={store}>
+        <AddProfileField title="Add Age" label="Age" type="number" name="age" />
+      </Provider>
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Add Age" }));
+
+    const input = screen.getByRole("spinbutton");
+    fireEvent.change(input, { target: { value: "25" } });
+
+    expect(input.value).toBe("25");
+  });
+
+  it("updates textarea field inside the modal", () => {
     render(
       <Provider store={store}>
         <AddProfileField
-          title="Add Gender"
-          label="Gender"
-          type="select"
-          name="gender"
+          title="Add Bio"
+          label="Bio"
+          type="textarea"
+          name="bio"
         />
       </Provider>
     );
 
-    // Open the modal by clicking the button
-    const addButton = screen.getByRole("button", { name: "Add Gender" });
-    fireEvent.click(addButton);
+    fireEvent.click(screen.getByRole("button", { name: "Add Bio" }));
 
-    // Click the close button
-    const closeButton = screen.getByRole("button", { name: "Close" });
-    fireEvent.click(closeButton);
+    const textarea = screen.getByRole("textbox");
+    fireEvent.change(textarea, { target: { value: "Hello world!" } });
 
-    // Verify the modal is closed
-    expect(screen.queryByRole("button", { name: "Close" })).not.toBeInTheDocument();
+    expect(textarea.value).toBe("Hello world!");
   });
 });
