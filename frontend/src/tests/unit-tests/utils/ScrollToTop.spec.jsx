@@ -5,7 +5,7 @@ import { vi } from 'vitest';
 
 vi.stubGlobal('scrollTo', vi.fn());
 
-describe('ScrollToTop Component', () => {
+describe('ScrollToTop util', () => {
 
   it('should call scrollTo when route changes', () => {
     const { rerender } = render(
